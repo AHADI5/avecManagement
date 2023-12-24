@@ -5,11 +5,6 @@ class Membres {
     private $postnom;
     private $adresse;
     private $telepone;
-
-
-
- 
-
     function __construct($nom, $postnom, $adresse, $telepone) {
         $this->nom = $nom;
         $this->postnom = $postnom;
