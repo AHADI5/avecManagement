@@ -35,10 +35,61 @@ class Epargnes {
         }
     }
 
-    public function getEpargnesMembre() {
-        
+    public function getEpargnes() {
+        global $connection ;
+        $requette = 'SELECT * FROM epargnes JOIN membre ON 
+        membre.id_membre = epargenes.id_membre';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute(array());
+
+        $epargnes  =[];
+
+        if ($execution) {
+            while ($data = $statement -> fetch()) {
+                $epargnes[] = $data;
+            }
+            return $epargnes;
+        } else {
+            return [];
+        }
     }
 
+    public function getEpargneByIdmember($id) {
+        global $connection ;
+        $requette = 'SELECT * FROM epargnes JOIN membre ON 
+        epargnes.id_membre=membre.id_membre WHERE id_membre = :id';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute(array(
+            ':id'=> $id,
+        ));
+        $epargne =[];
+        if ($execution) {
+            while ($data = $statement -> fetch()) {
+                $epargne[] = $data;
+            }
+
+            return $epargne;
+        } else return [];
+    }
+
+    public function getEpargneByAvec ($id_avec) {
+        global $connection ;
+        $requette = 'SELECT * FROM epargnes JOIN membre ON 
+        epargnes.id_avec=membre.id_avec WHERE id_avec = :id';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute(array(
+            ':id'=> $id_avec,
+        ));
+        $epargne =[];
+        if ($execution) {
+            while ($data = $statement -> fetch()) {
+                $epargne[] = $data;
+            }
+
+            return $epargne;
+        } else return [];
+
+    }
     public function getIdmembre(){
         return $this->id_membre ;
     }
