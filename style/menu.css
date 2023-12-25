@@ -1,0 +1,11 @@
+.menucontent {
+    background-color: var(--side-bar-color);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 200px;
+}
+li {
+    list-style-type: none;
+}

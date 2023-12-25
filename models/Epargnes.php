@@ -15,11 +15,11 @@ class Epargnes {
     }
 
     public function eparnger() {
-        global $conncection ;
+        global $connection ;
         $result = false ; 
         $requette = 'INSERT INTO epargnes(id_membre,id_avec,montant,date) 
         VALUES (:id_membre,:id_avec,:montant,:date)';
-        $statement = $conncection -> prepare($requette);
+        $statement = $connection -> prepare($requette);
         $execution = $statement -> execute(array(
             'id_membre'=> $this->getIdmembre(),
             'id_avec'=> $this->getIdavec(),
@@ -35,10 +35,10 @@ class Epargnes {
         }
     }
 
-    public function getEpargnes() {
+    public static function getEpargnes() {
         global $connection ;
         $requette = 'SELECT * FROM epargnes JOIN membre ON 
-        membre.id_membre = epargenes.id_membre';
+        membre.id_membre = epargnes.id_membre';
         $statement = $connection -> prepare($requette);
         $execution = $statement -> execute(array());
 
@@ -54,10 +54,10 @@ class Epargnes {
         }
     }
 
-    public function getEpargneByIdmember($id) {
+    public static function getEpargneByIdmember($id) {
         global $connection ;
         $requette = 'SELECT * FROM epargnes JOIN membre ON 
-        epargnes.id_membre=membre.id_membre WHERE id_membre = :id';
+        epargnes.id_membre=membre.id_membre WHERE membre.id_membre = :id';
         $statement = $connection -> prepare($requette);
         $execution = $statement -> execute(array(
             ':id'=> $id,
@@ -72,14 +72,14 @@ class Epargnes {
         } else return [];
     }
 
-    public function getEpargneByAvec ($id_avec) {
+    public static function getEpargneByAvec ($id_avec) {
         global $connection ;
-        $requette = 'SELECT * FROM epargnes JOIN membre ON 
-        epargnes.id_avec=membre.id_avec WHERE id_avec = :id';
+        $requette = 'SELECT * FROM epargnes JOIN avec ON 
+        epargnes.id_avec=avec.id_avec WHERE avec.id_avec = :id_avec';
         $statement = $connection -> prepare($requette);
-        $execution = $statement -> execute(array(
-            ':id'=> $id_avec,
-        ));
+        $execution = $statement -> execute([
+            ':id_avec'=> $id_avec,
+        ]);
         $epargne =[];
         if ($execution) {
             while ($data = $statement -> fetch()) {

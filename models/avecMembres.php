@@ -16,8 +16,8 @@ class AvecMembres {
         VALUES (:id_membre , :id_avec)';
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array(
-            'id_membre'=> $this->getIdMembres(),
-            'id_avec'=> $this->getId_avec(),
+            ':id_membre'=> $this->getIdMembres(),
+            ':id_avec'=> $this->getId_avec(),
         ));
 
         if ($execution) {
@@ -28,7 +28,7 @@ class AvecMembres {
         }
     }
 
-    public function getavecMembers ($id_avec){
+    public static function getavecMembers ($id_avec){
         global $connection ;
         $result = false ;
         $requette = 'SELECT * FROM avec_members JOIN membre ON
@@ -50,14 +50,14 @@ class AvecMembres {
 
     }
 
-    public function deleteMemberFromAvec($id_member) {
+    public static function deleteMemberFromAvec($id_member) {
         global $connection ;
         $result = false ;
-        $requette = 'DELETE FROM avec_members WHERE id_member = :id_member';
+        $requette = 'DELETE FROM avec_members WHERE id_membre = :id';
         $statement = $connection->prepare($requette);
-        $execution = $statement->execute(array([
-            'id_member'=> $id_member
-        ]));
+        $execution = $statement->execute([
+            ':id'=> $id_member,
+        ]);
 
         if ($execution) {
             $result = true ;

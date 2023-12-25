@@ -85,6 +85,31 @@ class Membres {
         }
     }
 
+    public static function updateMembre($id,$nom,$postnom,
+    $adresse,$telephone) {
+        global $connection ;
+        $result =  false ;
+        $requette = 'UPDATE membre SET nom = :nom , postnom = :postnom,
+         adresse = :adresse, telephone = :telephone WHERE id_membre = :id';
+        
+        $statement = $connection->prepare($requette);
+        $execution = $statement->execute(array(
+            'id'=> $id,
+            'nom'=> $nom,
+            'postnom'=> $postnom,
+            'adresse'=> $adresse,
+            'telephone'=> $telephone
+        ));
+
+        if ($execution) {
+            $result = true ;
+            return $result ;
+        } else {
+            return $result ;
+        }
+
+    }
+
 
     public function getNom() {
         return $this->nom;

@@ -62,9 +62,9 @@ CREATE TABLE remboursements(
     date_remb DATETIME ,
     montant FLOAT NOT NULL ,
     PRIMARY KEY(id_membre),
-     FOREIGN KEY (id_membre) REFERENCES membre(id_membre),
+    FOREIGN KEY (id_membre) REFERENCES membre(id_membre),
     FOREIGN KEY (id_avec) REFERENCES avec(id_avec),
-      FOREIGN KEY (id_credit) REFERENCES credits(id_credit)
+    FOREIGN KEY (id_credit) REFERENCES credits(id_credit)
 );
 
 CREATE TABLE social(

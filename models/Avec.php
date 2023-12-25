@@ -99,7 +99,7 @@ class Avec
         $resultat = false ;
         global $connection ;
         $requette = 'UPDATE avec SET date_debut=:date_debut, 
-        date_fin = :date_fin, solde = :solde, part_value = :part_value,
+        date_fin = :date_fin, part_value = :part_value,
         taux_interet = :taux_interet,social_value = :social_value WHERE id_avec = :id';
 
         $statement = $connection -> prepare($requette);
@@ -120,7 +120,7 @@ class Avec
         
     }
 
-    
+
 
     public function getdateDebut () {
         return $this->dateDebut;
