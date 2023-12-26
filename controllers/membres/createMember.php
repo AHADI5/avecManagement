@@ -11,7 +11,7 @@ if (isset($_POST["nom"]) && isset($_POST['postnom'])
 
     $member = new Membres($nom,$postnom,$adresse,$telephone);
     if ($member -> createMember()) {
-        echo 'Success';
+        header('Location:../../views/membres.php');
     } else {
         echo "Didn't create";
     }

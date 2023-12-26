@@ -8,19 +8,19 @@
     <div class="menucontent flex">
         <ul>
             <li>
-                <a href="">
+                <a href="./homePage.php">
                    <div class="icon"> <i class = "bi bi-house-door"></i></div>
                     <div class="menu">Home</div>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="./avec.php">
                     <div class="icon"><i class="bi bi-collection"></i></div>
                     <div class="menu">Avec</div>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="./membres.php">
                    <div class="icon"> <i class="bi bi-people-fill"></i></div>
                     <div class="menu">Membres</div>
                 </a>

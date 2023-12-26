@@ -12,7 +12,14 @@
 <body>
    <div class="page_content flex">
         <div class="menu"> <?php include("./include/menu.php") ?></div>
-        <div class="title-bar"><?php include("./include/titlePage.php") ?></div>
+        <div class="content">
+            <div class="title-bar">
+                <?php include("./include/titlePage.php") ?>
+            </div>
+            <div class="conts">
+                hhh
+            </div>
+        </div>
        
     </div>
     

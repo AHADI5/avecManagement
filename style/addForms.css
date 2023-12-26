@@ -1,0 +1,50 @@
+.add-form {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.info {
+    margin-top: 10px;
+    padding: 8px;
+}
+
+.info input,.info button {
+    width: 315px;
+    padding: 10px;
+}
+
+.info button {
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.info button:hover {
+
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#idAvec {
+    visibility: hidden;
+}
+
+#id_member {
+    border: none;
+    text-align: center;
+}
+
+#id_member:focus {
+    border: none;
+   
+}
+
+td button {
+    width: 100%;
+    background-color: var(--secondary-color);
+    padding: 3px;
+    color: white;
+    border: none;
+}

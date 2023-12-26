@@ -1,6 +1,5 @@
 <?php 
-include("../../configurations/config.php");
-include("../../models/Avec.php");
+require_once('C:\laragon\www\avecManagement\configurations\config.php');
+require_once('C:\laragon\www\avecManagement\models\Avec.php');
 
 $avecs = Avec::getAvec();
-print_r($avecs);

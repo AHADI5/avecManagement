@@ -1,6 +1,5 @@
 <?php  
-include("../../configurations/config.php");
-include("../../models/Membres.php");
+require_once('C:\laragon\www\avecManagement\configurations\config.php');
+require_once('C:\laragon\www\avecManagement\models\Membres.php');
 
 $membres = Membres::getMembres();
-var_dump($membres);

@@ -1,0 +1,14 @@
+table {
+ 
+    width: 100%;
+    background-color: var(--body-color);
+}
+
+thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+tr td {
+    text-align: center;
+    padding: 12px;
+}

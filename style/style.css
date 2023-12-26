@@ -7,7 +7,8 @@
     /* colors */
     --body-color:#E4E9F7;
     --side-bar-color:#FFF;
-    --primary-color:rgb(68, 137, 217);
+    --primary-color:rgb(145, 68, 217);
+    --secondary-color :rgb(200, 87, 65);
     --primary-color-light:#F6F5FF;
     --text-color:#707070;
     --boxshadow:rgba(31, 32, 34, 0.3) 0px 1px 2px 0px ,
@@ -17,7 +18,7 @@
 }
 a{
     text-decoration: none;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
 }
 
 *{
@@ -58,4 +59,26 @@ body {
 
 .logo {
     margin-top: 20px;
+}
+
+.conts {
+    margin-top: 5px;
+    position: absolute;
+    top: 60px;
+    left: 155px;
+    height: 88vh;
+    background-color: white;
+    width: 87%;
+    padding: 12px;
+}
+.action .new-member{
+    width: 200px;
+}
+.action button {
+    outline: none;
+    border: none;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px;
+    width: 100px;
 }

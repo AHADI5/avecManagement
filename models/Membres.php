@@ -22,7 +22,7 @@ class Membres {
             'nom'=> $this->getNom(),
             'postnom'=> $this->getpostnom(),
             'adresse'=> $this->getadresse(),
-            'telephone'=> $this->getTelepone(),
+            'telephone'=> $this->getTelephone(),
         ));
 
         if ($execution ) {
@@ -38,12 +38,14 @@ class Membres {
         $requette = 'SELECT * FROM membre';
         $stmt = $connection->prepare($requette);
         $execution = $stmt->execute(array());
+        $membres = [];
         if ($execution ) {
             while ($data = $stmt->fetch()) {
                 $membre = new Membres($data['nom'], $data['postnom'],
                 $data['adresse'], $data['telephone']) ;
+                array_push($membres,$membre);
             }
-            return $membre;
+            return $membres;
         } else {
             return null ;
         }
@@ -110,6 +112,27 @@ class Membres {
 
     }
 
+    public function getId(){
+        global $connection ;
+        $requette = 'SELECT id_membre FROM membre WHERE 
+        nom = :nom AND postnom = :postnom AND telephone= :telephone';
+        $stmt = $connection->prepare($requette);
+        $execution = $stmt->execute([
+            'nom'=> $this->getNom(),
+            'postnom'=> $this->getPostnom(),
+            'telephone'=> $this->getTelephone(),
+
+        ]);
+        
+        if ($execution) {
+            $data = $stmt->fetch();
+            $numeo = $data['id_membre'];
+            return $numeo ;
+        } else {
+            return null ;
+        }
+    }
+
 
     public function getNom() {
         return $this->nom;
@@ -121,7 +144,7 @@ class Membres {
         return $this->adresse;
     }
 
-    public function getTelepone() {
+    public function getTelephone() {
         return $this->telepone;
     }
 }

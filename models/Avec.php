@@ -64,7 +64,7 @@ class Avec
             while ($data = $statement -> fetch()) {
                 $avec = new Avec($data['date_debut'], $data['date_fin'], $data['solde'],
                 $data['part_value'],$data['taux_interet'],$data['social_value']);
-                $avecs[] = $avec;
+              
                 array_push($avecs, $avec);
             } 
 
@@ -86,6 +86,27 @@ class Avec
                 $data['part_value'],$data['taux_interet'],$data['social_value']);
             return $avec ;
         } else return null;
+    }
+
+
+    public function getId () { 
+        global $connection ;
+        $requette = 'SELECT id_avec FROM avec WHERE 
+        date_debut = :dateDebut AND date_fin = :dateFin';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            'dateDebut'=> $this -> getdateDebut(),
+            'dateFin'=> $this -> getdateFin()
+        ]);
+
+        if ($execution) {
+            $data = $statement -> fetch();
+            $numero = $data['id_avec'];
+
+            return $numero;
+        } else {
+            return null;
+        }
     }
 
     public static function modifyAvec(
