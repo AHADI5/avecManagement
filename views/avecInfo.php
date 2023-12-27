@@ -19,7 +19,7 @@
 <?php
   include("../controllers/avec/getAvec.php"); 
 ?>
-<body>
+<body class="bodyOp">
    <div class="page_content flex">
         <div class="menu"> <?php include("./include/menu.php") ?></div>
         <div class="content">
@@ -50,7 +50,7 @@
                    <th>Nom</th>
                    <th>Postnom</th>
                    <th>Adresse</th>
-                   <th>Telephone</th>
+                   <th>Actions</th>
                </thead>
                <tbody >
                 <?php
@@ -70,20 +70,18 @@
                             <td>$nom</td>
                             <td>$postnom</td>
                             <td>$adresse</td>
-                            <td>$telephone</td>
+                            <td><button>Retirer</button></td>
                         </tr>
                     __END;
-                }
-
-
-                 
+                }   
                 ?>
 
        
                   
                </tbody>
            </table>
-           <div class="add-member-popup  inactive_popup">
+           <div class="add-member  inactive_popup">
+           <div class="add-member-popup ">
                 <div class="popup-header flex">
                     <div class="popup-title">Ajouter Des membres</div>
                     <div class="close-button"> 
@@ -91,21 +89,31 @@
                     </div>
                 </div>
                 <div class="pop-up-boy">
-                          <table>
-                    <thead>
-                        <th>Numero</th>
-                        <th>Nom</th>
-                        <th>Postnom</th>
-                        <th>Adresse</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody class="membres">
+                    <div class="pop-content">
+                        <table>
+                            <thead>
+                                <th>Numero</th>
+                                <th>Nom</th>
+                                <th>Postnom</th>
+                                <th>Adresse</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody class="membres">
 
-                                       
-                    </tbody>
-                </table>
+                                            
+                            </tbody>
+                           
+                        </table>
+                        <div class="actions flex"> 
+                            <button>Save</button>
+                            <button>Cancel</button>
 
+                         </div>
+                    </div>
+                    
                 </div>
+           </div>
+                
            </div>
        
        </div>

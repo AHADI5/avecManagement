@@ -1,17 +1,24 @@
 const addMemberButton = document.querySelector(".new-member");
-const popupContainer = document.querySelector(".add-member-popup");
+const popupContainer = document.querySelector(".add-member");
 const pageContainer = document.querySelector("body");
 const closeButton = document.querySelector(".close-popup");
 
 const id_avec =document.querySelector(".page-level>.id");
 addMemberButton.addEventListener("click" , () => {
-    
+  
+   
     popupContainer.classList.toggle("inactive_popup");
-    // pageContainer.style.opacity = 0.2;
-    
+  
     getData() ;
 
 })
+
+// when clik outiside the box , close the popup
+window.onclick = (event) => {
+    if (event.target == popupContainer) {
+      popupContainer.classList.toggle("inactive_popup");
+    }
+  }
 
 //closing popup 
 
