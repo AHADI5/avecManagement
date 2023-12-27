@@ -11,11 +11,11 @@ for ($i=0; $i < count($membres) ; $i++) {
     $telephone = $membres[$i] -> getTelephone();
     echo <<< __END
         <tr>
-            <td>$numero</td>
+            <td id ="id_membre">$numero</td>
             <td>$nom</td>
             <td>$postnom</td>
             <td>$adresse</td>
-            <td><button class = "ajouterMembre">Ajouter</button></td>
+            <td class="cell-act"><button class = "ajouterMembre">Ajouter</button></td>
         </tr>
     __END;
 }

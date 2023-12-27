@@ -61,7 +61,7 @@
                 <div class="popup-header flex">
                     <div class="popup-title">Ajouter Des membres</div>
                     <div class="close-button"> 
-                        <button class="close-popup"> x </button> 
+                        <button class="close-popup flex"> <span class="close-text">x</span> </button> 
                     </div>
                 </div>
                 <div class="pop-up-boy">
