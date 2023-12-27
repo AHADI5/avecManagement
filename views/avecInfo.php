@@ -52,7 +52,33 @@
                    <th>Adresse</th>
                    <th>Telephone</th>
                </thead>
-               <tbody>
+               <tbody >
+                <?php
+                 include("C:\laragon\www\avecManagement\configurations\config.php");
+                 include("C:\laragon\www\avecManagement\models\avecMembres.php");
+
+                 $membresAvec = AvecMembres::getavecMembers($id);
+                 for ($i=0; $i <count($membresAvec); $i++) { 
+                    $numero = $membresAvec[$i]['id_item'];
+                    $nom = $membresAvec[$i]['nom'];
+                    $postnom = $membresAvec[$i]['postnom'];
+                    $adresse = $membresAvec[$i]['adresse'];
+                    $telephone = $membresAvec[$i]['telephone'];
+                    echo <<< __END
+                        <tr>
+                            <td>$numero</td>
+                            <td>$nom</td>
+                            <td>$postnom</td>
+                            <td>$adresse</td>
+                            <td>$telephone</td>
+                        </tr>
+                    __END;
+                }
+
+
+                 
+                ?>
+
        
                   
                </tbody>
@@ -88,5 +114,6 @@
     </div>
     <script src="../script/getAvecById.js"></script>
     <script src="../script/addMembers.js"></script>
+    
 </body>
 </html>

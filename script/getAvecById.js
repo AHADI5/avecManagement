@@ -1,5 +1,6 @@
 let id = document.querySelector(".id");
-getData(Number(id.id))
+getData(Number(id.id));
+// getAvecMembers(parseInt(id.id));
 function getData(id) {
     data  = new FormData() ;
     data.append('id_avec' ,id)
@@ -22,3 +23,23 @@ function getData(id) {
     xhr.send(data);
 }
 
+
+function getAvecMembers(id_avec) {
+    data = new FormData() ;
+    data.append("id_avec", id_avec);
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+            let reponse = xhr.response;
+            const memberZone  = document.querySelector(".members");
+            memberZone.innerHTML = reponse;
+        } else {
+            console.log("request failed");
+        }
+
+    }
+
+    xhr.open('POST', '../controllers/avecMember/getMembers.php');
+    xhr.send(data);
+}

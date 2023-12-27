@@ -9,9 +9,9 @@ if (isset($_POST["id_avec"]) && isset($_POST["id_member"])) {
     $avecList = new AvecMembres($id_member, $id_avec);
 
     if ($avecList ->addMememberToAvec()) {
-       header("Location:../../views/avecInfo.php");
+       echo "success";
     } else {
-        echo "Couldn't fullfil";
+        echo "failure";
     }
 } else {
     echo "no data";
