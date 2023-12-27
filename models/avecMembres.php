@@ -31,6 +31,7 @@ class AvecMembres {
     public static function getavecMembers ($id_avec){
         global $connection ;
         $result = false ;
+        
         $requette = 'SELECT * FROM avec_members JOIN membre ON
          avec_members.id_membre = membre.id_membre WHERE id_avec = :id_avec';
         $statement = $connection->prepare($requette);

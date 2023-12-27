@@ -13,7 +13,7 @@ addMemberButton.addEventListener("click" , () => {
 
 })
 
-// when clik outiside the box , close the popup
+// // when clik outiside the box , close the popup
 window.onclick = (event) => {
     if (event.target == popupContainer) {
       popupContainer.classList.toggle("inactive_popup");
@@ -82,6 +82,25 @@ function sendData(id_avec, id_membre) {
 }
 
 //getting Avec Members 
+function getAvecMembers(id_avec) {
+    data = new FormData() ;
+    data.append("id_avec", id_avec);
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+            let reponse = xhr.response;
+            const memberZone  = document.querySelector(".membres-list");
+            memberZone.innerHTML = reponse;
+        } else {
+            console.log("request failed");
+        }
+
+    }
+
+    xhr.open('POST', '../controllers/avecMember/getMembers.php');
+    xhr.send(data);
+}
 
 
 

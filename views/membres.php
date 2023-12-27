@@ -42,7 +42,7 @@
                         <th>Adresse</th>
                         <th>Telephone</th>
                     </thead>
-                    <tbody>
+                    <tbody class="liste">
                     <?php
                         include("../controllers/membres/getMembre.php"); 
                        
@@ -55,6 +55,8 @@
         </div>
        
     </div>
+
+    
     
 </body>
 </html>

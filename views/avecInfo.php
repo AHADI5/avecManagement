@@ -52,7 +52,7 @@
                    <th>Adresse</th>
                    <th>Actions</th>
                </thead>
-               <tbody >
+               <tbody class=".membres-list">
                 <?php
                  include("C:\laragon\www\avecManagement\configurations\config.php");
                  include("C:\laragon\www\avecManagement\models\avecMembres.php");
@@ -66,11 +66,11 @@
                     $telephone = $membresAvec[$i]['telephone'];
                     echo <<< __END
                         <tr>
-                            <td>$numero</td>
+                            <td class ="num">$numero</td>
                             <td>$nom</td>
                             <td>$postnom</td>
                             <td>$adresse</td>
-                            <td><button>Retirer</button></td>
+                            <td class = "cell-dell"><button class= "deleteMem">Retirer</button></td>
                         </tr>
                     __END;
                 }   
@@ -122,6 +122,7 @@
     </div>
     <script src="../script/getAvecById.js"></script>
     <script src="../script/addMembers.js"></script>
+    <script src="../script/retirerMember.js"></script>
     
 </body>
 </html>
