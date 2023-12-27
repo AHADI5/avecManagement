@@ -44,35 +44,38 @@
                         $codeAvec = "#" . explode("-",$dateDebut)[2]. "-" .explode("-",$dateFin)[1];
 
                         echo <<< __END
-                                <a href="./avecInfo.php?numero=$numero&dateDebut=$dateDebut&dateFin=$dateFin&solde=$solde&partVal=$partValue&tauxInt=$tauxInteret&social=$socialValue&codeAvec=$codeAvec">
-                                    <div class="avec">
-                                        <div class="number-code flex">
-                                            <div class="number-id flex"> <div class="id">$numero</div> </div>
-                                            <div class="code">$codeAvec</div>
-                                        </div>
-                                        <div class="solde flex"><i class = "bi bi-wallet"></i> <div class="amount">$solde $</div> </div>
-                                        <div class="avec-brief-info">
-                                            <div class="created flex flex"><i class = "bi bi-calendar"></i>  <div class="on">$dateDebut</div> <div class="to">$dateFin</div></div>
-                                            <div class="members"><i class = "bi bi-people"></i> 30</div>
-                                        </div>
 
-                                        <div class="status">En cours</div>
+                            <div class="avec-content">
+                                <div class="avec" id = "$numero">
+                                    <div class="number-code flex">
+                                        <div class="number-id flex"> <div class="id">$numero</div> </div>
+                                        <div class="code">$codeAvec</div>
                                     </div>
-                                </a>
-                               
+                                    <div class="solde flex"><i class = "bi bi-wallet"></i> <div class="amount">$solde $</div> </div>
+                                    <div class="avec-brief-info">
+                                        <div class="created flex flex"><i class = "bi bi-calendar"></i>  <div class="on">$dateDebut</div> <div class="to">$dateFin</div></div>
+                                        <div class="members"><i class = "bi bi-people"></i> 30</div>
+                                    </div>
 
+                                    <div class="status">En cours</div>
+                                </div>
+                            </div>
+       
+                                   
                         __END;
                       
                         
                     }
                     ?>
-                   
+
+                             
                 </div>
             
             </div>
         </div>
        
     </div>
-    
+
+    <script src="../script/getAvecInfo.js"></script>
 </body>
 </html>

@@ -79,12 +79,11 @@ class Avec
         $execution = $statement -> execute([
             'id_avec'=> $id
         ]);
-       
+     
         if ($execution) {
             $data = $statement -> fetch();
-            $avec = new Avec($data['date_debut'], $data['date_fin'], $data['solde'],
-                $data['part_value'],$data['taux_interet'],$data['social_value']);
-            return $avec ;
+           
+            return $data ;
         } else return null;
     }
 

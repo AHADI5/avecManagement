@@ -45,9 +45,15 @@
     align-items: center;
     align-content: center;
     text-align: center;
-   width: 30px;
-   height: 30px;
+    width: 30px;
+    height: 30px;
     border-radius: 100%;
+   
+}
+
+.number-code {
+    padding: 20px;
+
 }
 
 .avec {

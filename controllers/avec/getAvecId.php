@@ -2,5 +2,10 @@
 include("../../configurations/config.php");
 include("../../models/Avec.php");
 
-$avec = Avec::getAvecById(1);
-print_r($avec);
+$id = $_POST["id_avec"];
+$avec = Avec::getAvecById($id);
+
+if ($avec != null) {
+    echo "window.location.href = '../views/avecInfo.php?id=$id';";
+    exit();
+}

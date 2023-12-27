@@ -1,15 +1,7 @@
-<?php 
-$numero = $_GET['numero'];
-$dateDebut = $_GET['dateDebut'];
-$dateFin = $_GET['dateFin'];
-$solde = $_GET['solde'];
-$partValue = $_GET['partVal'];
-$tauxInteret = $_GET['tauxInt'];
-$social_value = $_GET['social'];
-$code = "#" . explode("-",$dateDebut)[2]. "-" .explode("-",$dateFin)[1];
-;
-?>
+<?php
+ $id = $_GET["id"];
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,39 +26,18 @@ $code = "#" . explode("-",$dateDebut)[2]. "-" .explode("-",$dateFin)[1];
                 <?php include("./include/titlePage.php") ?>
             </div>
             <div class="conts">
-                <div class="page-level"><?php echo $code ?></div>
+                <div class="page-level">#<span class="id" id="<?php echo $id ?>"><?php echo $id ?></span> </div>
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
                     <div class="actions">
                         <div class="action"> 
-                           <a href="./ajouterDansAvec.php?idAvec=<?php echo $numero ?>"><button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter des Membres</button></a>
+                           <a href="./ajouterDansAvec.php?idAvec=<?php echo $id ?>"><button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter des Membres</button></a>
                          </div>
                         <div class="action"></div>
                     </div>
                 </div>
                 <div class="informations-avec">
-                    <div class="dates flex">
-                        <div class="debut">
-                            <div class="label">Debut</div>
-                            <div class="value"><?php echo $dateDebut ?></div>
-                        </div>
-                        <div class="fin">
-                            <div class="label">Fin</div>
-                            <div class="value"> <?php echo  $dateFin ?></div>
-                        </div>
-                        <div class="social"> 
-                            <div class="label"> Social </div>
-                            <div class="value"><?php echo $social_value ?> CDF</div></div>
-                        <div class="parts">
-                            <div class="label">Parts </div>
-                            <div class="value"><?php echo $partValue ?> USD</div>
-                        </div>
-                        <div class="taux">
-                            <div class="label">Interet</div> 
-                            <div class="value">  <?php echo $tauxInteret ?> %</div>
-                        </div>
-
-                    </div>
+                   
                 </div>
                 <div class="avec-list grid">
                 
@@ -80,30 +51,8 @@ $code = "#" . explode("-",$dateDebut)[2]. "-" .explode("-",$dateFin)[1];
                         <th>Action</th>
                     </thead>
                     <tbody>
-                    <?php
-                   include("../controllers/avecMember/getMembers.php"); 
-                   $membresAvec = AvecMembres::getavecMembers($numero);
-                   for ($i=0; $i < count($membresAvec) ; $i++) { 
-                    $numero = $membresAvec[$i]["id_membre"];
-                    $nom = $membresAvec[$i]["nom"];
-                    $postnom = $membresAvec[$i]["postnom"];
-                    $adresse = $membresAvec[$i] ["adresse"];
-                    $telephone = $membresAvec[$i]["telephone"];
-                    echo <<< __END
-
-                        <tr>
-                            <td>$numero</td>
-                            <td>$nom</td>
-                            <td>$postnom</td>
-                            <td>$adresse</td>
-                            <td>$telephone</td>
-                            <td></td>
-                        </tr>
-                    __END;
-                   }
                    
-            
-                    ?>
+                  
                        
                     </tbody>
                 </table>
@@ -114,6 +63,6 @@ $code = "#" . explode("-",$dateDebut)[2]. "-" .explode("-",$dateFin)[1];
         </div>
        
     </div>
-    
+    <script src="../script/getAvecById.js"></script>
 </body>
 </html>

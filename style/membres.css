@@ -5,8 +5,13 @@ table {
 }
 
 thead {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--body-color);
+    color: var(--text-color);
+    border-collapse: collapse;
+}
+
+thead th {
+    padding: 5px;
 }
 tr td {
     text-align: center;
