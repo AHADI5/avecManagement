@@ -15,7 +15,7 @@ for ($i=0; $i < count($membres) ; $i++) {
             <td>$nom</td>
             <td>$postnom</td>
             <td>$adresse</td>
-            <td>$telephone</td>
+            <td><button class = "ajouterMembre">Ajouter</button></td>
         </tr>
     __END;
 }

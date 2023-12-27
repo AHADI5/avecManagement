@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../style/title-bar.css">
     <link rel="stylesheet" href="../style/avec.css">
     <link rel="stylesheet" href="../style/membres.css">
+    <link rel="stylesheet" href="../style/popup.css">
     <title>Home</title>
 </head>
 <?php
@@ -31,7 +32,7 @@
                     <div class="text">Lorem ipsum dolor sit amet.</div>
                     <div class="actions">
                         <div class="action"> 
-                           <a href="./ajouterDansAvec.php?idAvec=<?php echo $id ?>"><button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter des Membres</button></a>
+                           <button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter des Membres</button>
                          </div>
                         <div class="action"></div>
                     </div>
@@ -40,29 +41,52 @@
                    
                 </div>
                 <div class="avec-list grid">
-                
-                    <table>
+           
+                   
+           </div>
+           <table>
+               <thead>
+                   <th>Numero</th>
+                   <th>Nom</th>
+                   <th>Postnom</th>
+                   <th>Adresse</th>
+                   <th>Telephone</th>
+               </thead>
+               <tbody>
+       
+                  
+               </tbody>
+           </table>
+           <div class="add-member-popup  inactive_popup">
+                <div class="popup-header flex">
+                    <div class="popup-title">Ajouter Des membres</div>
+                    <div class="close-button"> 
+                        <button class="close-popup"> x </button> 
+                    </div>
+                </div>
+                <div class="pop-up-boy">
+                          <table>
                     <thead>
                         <th>Numero</th>
                         <th>Nom</th>
                         <th>Postnom</th>
                         <th>Adresse</th>
-                        <th>Telephone</th>
                         <th>Action</th>
                     </thead>
-                    <tbody>
-                   
-                  
-                       
+                    <tbody class="membres">
+
+                                       
                     </tbody>
                 </table>
-                   
+
                 </div>
-            
-            </div>
+           </div>
+       
+       </div>
         </div>
        
     </div>
     <script src="../script/getAvecById.js"></script>
+    <script src="../script/addMembers.js"></script>
 </body>
 </html>

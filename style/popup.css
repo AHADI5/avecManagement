@@ -1,0 +1,37 @@
+.add-member-popup {
+    background-color: rgba(165, 173, 211, 0.8);
+    width: 80%;
+    position: absolute;
+    left: 100px;
+    opacity: 1;
+
+    transition: opacity 0.3s ease-in-out ;
+   
+}
+
+.add-member-popup .popup-header {
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.inactive_popup {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.close-popup{
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    padding: 3px;
+    color: var(--secondary-color);
+}
+
+td .ajouterMembre  {
+    border: none;
+    outline: none;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px;
+    
+}
