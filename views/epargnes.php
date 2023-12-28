@@ -50,8 +50,11 @@
                    <th>Numero</th>
                    <th>Nom</th>
                    <th>Postnom</th>
-                   <th>Adresse</th>
-                   <th>Actions</th>
+                   <th>Parts</th>
+                   <th>Social</th>
+
+                
+                  
                </thead>
                <tbody class=".membres-list">
                 <?php
@@ -70,8 +73,10 @@
                             <td class ="num">$numero</td>
                             <td>$nom</td>
                             <td>$postnom</td>
-                            <td>$adresse</td>
-                            <td class = "cell-dell"><button class= "deleteMem">Retirer</button></td>
+                            <td><input type="number" name="parts" id="parts"> </td>
+                            <td> <input type="number" name="social" id="social"></td>
+                            
+                            <td class = "enregistrer"><button class= "enregistrer">Enregistrer</button></td>
                         </tr>
                     __END;
                 }   
@@ -121,10 +126,7 @@
         </div>
        
     </div>
-    <script src="../script/getAvecById.js"></script>
-    <script src="../script/addMembers.js"></script>
-    <script src="../script/retirerMember.js"></script>
-    <script src="../script/epargnes.js"></script>
-    
+   
+    <script src="../script/epargner.js"></script>
 </body>
 </html>

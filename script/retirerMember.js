@@ -19,8 +19,9 @@ function deleteMember(idMember) {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             if (xhr.response === "Deleted") {
+                //updating liste
+                // getMembers();
                 
-                console.log("Succeed");
                 
             }
            
@@ -34,3 +35,21 @@ function deleteMember(idMember) {
     xhr.send(data); 
 }
 
+function getMembers() {
+  
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+            let reponse = xhr.response;
+            const memberZone  = document.querySelector(".membres-list");
+            memberZone.innerHTML = reponse;
+        } else {
+            console.log("request failed");
+        }
+
+    }
+
+    xhr.open('POST', '../controllers/membres/getMembre.php');
+    xhr.send(data);
+}

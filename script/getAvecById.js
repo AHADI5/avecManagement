@@ -16,9 +16,7 @@ function getData(id) {
         } else {
             console.log("request failed");
         }
-
     }
-
     xhr.open('POST', '../controllers/avec/getAvecIdInfo.php');
     xhr.send(data);
 }

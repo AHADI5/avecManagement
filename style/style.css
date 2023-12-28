@@ -71,10 +71,10 @@ body {
     width: 87%;
     padding: 12px;
 }
-.action .new-member{
+.action .new-member, .epargnes{
     width: 200px;
 }
-.action button {
+.action button, .epargnes button {
     outline: none;
     border: none;
     background-color: var(--secondary-color);
