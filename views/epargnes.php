@@ -1,5 +1,7 @@
 <?php
  $id = $_GET["id"];
+ $part_value =$_GET["part"];
+ $social = $_GET["social"]
 
 ?>
 <!DOCTYPE html>
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="../style/avec.css">
     <link rel="stylesheet" href="../style/membres.css">
     <link rel="stylesheet" href="../style/popup.css">
+    <link rel="stylesheet" href="../style/epargnes.css">
     <title>Home</title>
 </head>
 <?php
@@ -28,6 +31,10 @@
             </div>
             <div class="conts">
                 <div class="page-level">#<span class="id" id="<?php echo $id ?>"><?php echo $id ?></span> </div>
+                <div class="page-level1"><span class="part" id="<?php echo $part_value ?>" ><?php echo $part_value ?> USD une part</span> </div>
+                <div class="page-level1"><span class="social" id="<?php echo $social ?>" ><?php echo $social ?> CDF social</span> </div>
+                <div class="page-level1 date-zone"></div>
+
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
                     <div class="actions">
@@ -70,13 +77,13 @@
                     $telephone = $membresAvec[$i]['telephone'];
                     echo <<< __END
                         <tr>
-                            <td class ="num">$numero</td>
+                            <td class ="num" id = "$numero">$numero</td>
                             <td>$nom</td>
                             <td>$postnom</td>
                             <td><input type="number" name="parts" id="parts"> </td>
-                            <td> <input type="number" name="social" id="social"></td>
+                            <td> <input type="number" name="social" id="social" value = $social></td>
                             
-                            <td class = "enregistrer"><button class= "enregistrer">Enregistrer</button></td>
+                            <td class = "enregistrer"><button class= "enregistrerButton">Enregistrer</button></td>
                         </tr>
                     __END;
                 }   
