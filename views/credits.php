@@ -34,6 +34,7 @@
 
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
+                    <div class="message hidden-message"></div>
                 </div>
                 <div class="informations-avec">
                    

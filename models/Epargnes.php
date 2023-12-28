@@ -88,10 +88,25 @@ class Epargnes {
             while ($data = $statement -> fetch()) {
                 $epargne[] = $data;
             }
-
             return $epargne;
         } else return [];
+    }
 
+    public static function getSavedMoney($id_member){
+        global $connection;
+        $requette  = 'SELECT SUM(montant) AS amountSaved FROM
+         epargnes WHERE id_membre = :id ';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute ([
+            'id' => $id_member,
+        ]);
+        if ($execution) {
+            $data = $statement -> fetch();
+            $montant = $data['amountSaved'];
+            return $montant;
+        } else {
+            return null;
+        }
     }
     public function getIdmembre(){
         return $this->id_membre ;

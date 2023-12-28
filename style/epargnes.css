@@ -10,3 +10,19 @@
     border-radius: 8px;
     padding: 9px;
 }
+
+.shown-message-success {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px;
+}
+
+.shown-message-failure {
+    background-color: red;
+    color: white;
+    padding: 8px;
+}
+
+.hidden-message {
+    visibility: hidden;
+}
