@@ -9,7 +9,7 @@ addMemberButton.addEventListener("click" , () => {
    
     popupContainer.classList.toggle("inactive_popup");
   
-    getData() ;
+    getEpa() ;
 
 })
 
@@ -27,7 +27,7 @@ closeButton.addEventListener("click" , () => {
 } )
 
 //Getting Members , and adding listeners to those buttons
-function getData() {
+function getEpa() {
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange= function() {
         if((xhr.readyState===4)&& (xhr.status===200)){

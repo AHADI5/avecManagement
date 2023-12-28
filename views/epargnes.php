@@ -37,13 +37,6 @@
 
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
-                    <div class="actions">
-                        <div class="action"> 
-                           <button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter des Membres</button>
-                           <button class = "epargnes"> <i class = "bi bi-plus"></i>Epargnes</button>
-                         </div>
-                        <div class="action"></div>
-                    </div>
                 </div>
                 <div class="informations-avec">
                    
@@ -70,7 +63,7 @@
 
                  $membresAvec = AvecMembres::getavecMembers($id);
                  for ($i=0; $i <count($membresAvec); $i++) { 
-                    $numero = $membresAvec[$i]['id_item'];
+                    $numero = $membresAvec[$i]['id_membre'];
                     $nom = $membresAvec[$i]['nom'];
                     $postnom = $membresAvec[$i]['postnom'];
                     $adresse = $membresAvec[$i]['adresse'];
@@ -135,5 +128,6 @@
     </div>
    
     <script src="../script/epargner.js"></script>
+    <script src ="../script/addMembers.js"></script>
 </body>
 </html>

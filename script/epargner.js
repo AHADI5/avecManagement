@@ -14,7 +14,10 @@ register.forEach(element => {
      let amount = parts * part_value; // le montant eparngne
      let date = getDate();
 
-     console.log(idMember,idAvec,parts,social, part_value, amount, date);
+     //Saving 
+     Epargner(idAvec,idMember,amount,parts,date);
+
+    //  console.log(idMember,idAvec,parts,social, part_value, amount, date);
     
      
    }) 
@@ -22,15 +25,17 @@ register.forEach(element => {
 
 function Epargner(id_avec, id_membre, montant, parts, date) {
     data  = new FormData() ;
-    data.append('id_avec' , id_avec);
-    data.append('')
+    data.append('idAvec' , id_avec);
+    data.append('montant' ,montant);
+    data.append('idMembres' , id_membre);
+    data.append('date',date);
+    data.append('parts',parts)
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange= function() {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             const response = xhr.response;
-            let execution = new Function(response);
-            execution();
+          
 
         } else {
             console.log("request failed");
@@ -38,11 +43,11 @@ function Epargner(id_avec, id_membre, montant, parts, date) {
 
     }
 
-    xhr.open('POST', '../controllers/epargnes/epargnesRediredtion.php');
+    xhr.open('POST', '../controllers/epargnes/epargner.php');
     xhr.send(data);
 }
 
-function social(id_avec, id_membre, montant, parts) {
+function social(id_avec, id_membre, ) {
     
 }
 

@@ -1,6 +1,5 @@
 <?php
  $id = $_GET["id"];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +59,7 @@
 
                  $membresAvec = AvecMembres::getavecMembers($id);
                  for ($i=0; $i <count($membresAvec); $i++) { 
-                    $numero = $membresAvec[$i]['id_item'];
+                    $numero = $membresAvec[$i]['id_membre'];
                     $nom = $membresAvec[$i]['nom'];
                     $postnom = $membresAvec[$i]['postnom'];
                     $adresse = $membresAvec[$i]['adresse'];

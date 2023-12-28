@@ -2,29 +2,32 @@
 class Epargnes {
     private $id_membre ;
     private $id_avec;
+    private $parts;
     private $montant ;
     private $date ;
 
 
 
-    public function __construct($id_membre, $id_avec, $montant, $date) {
+    public function __construct($id_membre, $id_avec, $montant, $date, $parts) {
         $this->id_membre = $id_membre;
         $this->id_avec = $id_avec;
         $this->montant = $montant;
         $this->date = $date;
+        $this ->parts =$parts;
     }
 
     public function eparnger() {
         global $connection ;
         $result = false ; 
-        $requette = 'INSERT INTO epargnes(id_membre,id_avec,montant,date) 
-        VALUES (:id_membre,:id_avec,:montant,:date)';
+        $requette = 'INSERT INTO epargnes(id_membre,id_avec,montant,date,parts) 
+        VALUES (:id_membre,:id_avec,:montant,:date,:parts)';
         $statement = $connection -> prepare($requette);
         $execution = $statement -> execute(array(
             'id_membre'=> $this->getIdmembre(),
             'id_avec'=> $this->getIdavec(),
             'montant'=> $this->getMontant(),
-            'date'=> $this->getDate()
+            'date'=> $this->getDate(),
+            'parts' => $this -> getParts()
         ));
 
         if ($execution) {
@@ -103,5 +106,8 @@ class Epargnes {
 
     public function getDate(){
         return $this->date ;
+    }
+    public function getParts(){
+        return $this->parts ;
     }
 }

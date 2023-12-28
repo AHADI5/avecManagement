@@ -11,8 +11,9 @@ if (isset($_POST["montant"]) && isset($_POST["idAvec"]) &&
     $membre = $_POST["idMembres"];
     $montant = $_POST["montant"];
     $date = $_POST["date"];
+    $parts = $_POST["parts"];
 
-    $epargne = new Epargnes($membre,$idAvec,$montant,$date);
+    $epargne = new Epargnes($membre,$idAvec,$montant,$date,$parts);
     
     if ($epargne -> eparnger()) {
         echo "Success";
