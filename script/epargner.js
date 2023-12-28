@@ -8,7 +8,7 @@ register.forEach(element => {
      let idMember = Number(id.innerHTML)
      let idAvec = Number(document.querySelector(".id").id);
      let parts = Number(parent.querySelector("#parts").value);
-     let social = Number(parent.querySelector("#social").value);
+     let socialAmount = Number(parent.querySelector("#social").value);
      let part_value = Number(document.querySelector(".part").id);
     
      let amount = parts * part_value; // le montant eparngne
@@ -16,6 +16,7 @@ register.forEach(element => {
 
      //Saving 
      Epargner(idAvec,idMember,amount,parts,date);
+     social(idAvec,idMember,date,socialAmount);
 
     //  console.log(idMember,idAvec,parts,social, part_value, amount, date);
     
@@ -35,6 +36,7 @@ function Epargner(id_avec, id_membre, montant, parts, date) {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             const response = xhr.response;
+            console.log(response);
           
 
         } else {
@@ -47,8 +49,25 @@ function Epargner(id_avec, id_membre, montant, parts, date) {
     xhr.send(data);
 }
 
-function social(id_avec, id_membre, ) {
-    
+function social(id_avec, id_membre,dateSocial, montant) {
+    data  = new FormData() ;
+    data.append('idAvec' , id_avec);
+    data.append('amount' ,montant);
+    data.append('idMembre' , id_membre);
+    data.append('dateSocial',dateSocial);
+   
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+            const response = xhr.response;
+        } else {
+            console.log("request failed");
+        }
+
+    }
+    xhr.open('POST', '../controllers/Social/contribute.php');
+    xhr.send(data);   
 }
 
 function getDate() {

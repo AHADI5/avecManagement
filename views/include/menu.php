@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="./socialAll.php">
                     <div class="icon"> <i class="bi bi-calendar-heart-fill"></i></div>
                     <div class="menu">Social</div>
                 </a>

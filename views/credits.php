@@ -1,5 +1,7 @@
 <?php
  $id = $_GET["id"];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +15,7 @@
     <link rel="stylesheet" href="../style/avec.css">
     <link rel="stylesheet" href="../style/membres.css">
     <link rel="stylesheet" href="../style/popup.css">
+    <link rel="stylesheet" href="../style/epargnes.css">
     <title>Home</title>
 </head>
 <?php
@@ -27,16 +30,10 @@
             </div>
             <div class="conts">
                 <div class="page-level">#<span class="id" id="<?php echo $id ?>"><?php echo $id ?></span> </div>
+                <div class="page-level1 date-zone"></div>
+
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
-                    <div class="actions">
-                        <div class="action"> 
-                           <button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter des Membres</button>
-                           <button class = "epargnes"> <i class = "bi bi-plus"></i>Epargnes</button>
-                           <button class = "credits"> <i class = "bi bi-plus"></i>Credits</button>
-                         </div>
-                        <div class="action"></div>
-                    </div>
                 </div>
                 <div class="informations-avec">
                    
@@ -50,8 +47,11 @@
                    <th>Numero</th>
                    <th>Nom</th>
                    <th>Postnom</th>
-                   <th>Adresse</th>
-                   <th>Actions</th>
+                   <th>Montant</th>
+
+
+                
+                  
                </thead>
                <tbody class=".membres-list">
                 <?php
@@ -67,11 +67,11 @@
                     $telephone = $membresAvec[$i]['telephone'];
                     echo <<< __END
                         <tr>
-                            <td class ="num">$numero</td>
+                            <td class ="num" id = "$numero">$numero</td>
                             <td>$nom</td>
                             <td>$postnom</td>
-                            <td>$adresse</td>
-                            <td class = "cell-dell"><button class= "deleteMem">Retirer</button></td>
+                            <td> <input type="number" name="montant" id="montant" ></td>
+                            <td class = "accorder"><button class= "grantButton">Accorder</button></td>
                         </tr>
                     __END;
                 }   
@@ -121,11 +121,9 @@
         </div>
        
     </div>
-    <script src="../script/getAvecById.js"></script>
-    <script src="../script/addMembers.js"></script>
-    <script src="../script/retirerMember.js"></script>
-    <script src="../script/epargnes.js"></script>
-    <script src="../script/credits.js"></script>
-    
+
+    <script src="../script/accorderCredit.js"></script>
+   
+   
 </body>
 </html>

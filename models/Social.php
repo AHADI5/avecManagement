@@ -36,7 +36,8 @@ class Social {
 
     public static  function getSocial() {
         global $connection ;
-        $requette = 'SELECT * FROM social';
+        $requette = 'SELECT * FROM social JOIN membre ON 
+        social.id_membre=membre.id_membre';
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array()) ;
 
