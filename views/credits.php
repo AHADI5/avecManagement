@@ -72,7 +72,7 @@
                             <td>$nom</td>
                             <td>$postnom</td>
                             <td> <input type="number" name="montant" id="montant" ></td>
-                            <td class = "accorder"><button class= "grantButton">Accorder</button></td>
+                            <td id="$numero" class = "accorder"><button  class= "grantButton">Accorder</button></td>
                         </tr>
                     __END;
                 }   

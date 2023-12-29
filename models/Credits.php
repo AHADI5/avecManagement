@@ -1,15 +1,13 @@
 <?php 
 class Credits{
     private $date_credit;
-    private $deadline;
     private $id_membre ;
     private $id_avec;
     private $montant;
 
-    public function __construct($date_credit,$deadline,
+    public function __construct($date_credit,
     $id_membre,$id_avec,$montant) {
         $this->date_credit = $date_credit;
-        $this->deadline = $deadline;
         $this->id_membre = $id_membre;
         $this->id_avec = $id_avec;
         $this->montant = $montant;
@@ -18,17 +16,16 @@ class Credits{
     public function emprunter () {
         global $connection ;
         $result = false ;
-        $requette = 'INSERT INTO credits(date_credit, deadline,
-        id_membre,id_avec,montant) VALUES (:date_credit,:deadline,
+        $requette = 'INSERT INTO credits(date_credit, 
+        id_membre,id_avec,montant) VALUES (:date_credit,
         :id_membre,:id_avec,:montant)';
 
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array(
             'date_credit'=> $this->getDateCredit() ,
-            'deadline'=> $this->getDeadline(),
             'id_membre'=> $this->getIdMembre(),
             'id_avec'=> $this->getIdavec(),
-            'id_montant'=> $this->getMontant()
+            'montant'=> $this->getMontant()
         ))  ; 
 
         if ($execution) {
@@ -58,8 +55,8 @@ class Credits{
 
     public static function getEmpruntsbyMembres($id_membres) {
         global $connection ;
-        $requette = 'SELECT * FROM epargnes JOIN membre ON 
-        epargnes.id_membre=membre.id_membre WHERE id_membre = :id';
+        $requette = 'SELECT * FROM credits JOIN membre ON 
+        credits.id_membre=membre.id_membre WHERE credits.id_membre = :id';
         $statement = $connection -> prepare($requette);
         $execution = $statement -> execute(array(
             ':id'=> $id_membres,
@@ -95,10 +92,6 @@ class Credits{
 
     public function getDateCredit(){
         return $this->date_credit;
-    }
-
-    public function getDeadline() {
-        return $this->deadline;
     }
 
     public function getIdMembre() {
