@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="./creditsAll.php">
                     <div class="icon">  <i class="bi bi-credit-card-fill"></i></div>
                     <div class="menu">Credits</div>
                 </a>

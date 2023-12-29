@@ -22,6 +22,8 @@ grantCredits.forEach(element  => {
 
             //Checking wether the amount is equal to three times the total amount Saved 
             if (amount === (3*amountSaved)) {
+                grantCredit(idAvec,amount,idMember,dateCr);
+                desactivateButton(idMember)
                 messageContainer.innerHTML = `
                 Credit accordé  : ${amount} USD
                 `
@@ -33,12 +35,12 @@ grantCredits.forEach(element  => {
                 }, 2000);
 
                 //Grating Credit
-                grantCredit(idAvec,amount,idMember,dateCr)
+              
 
 
             } else {
                 messageContainer.innerHTML = `
-                Credit Refusé : ${amount} USD
+                Credit Refusé : ${amount} USD, Montant Suggere ${3*amountSaved}
                 `
                 messageContainer.classList.remove("hidden-message");
                 messageContainer.classList.add("shown-message-failure");
@@ -70,14 +72,8 @@ function verifyPreviousCredit(idMember) {
                         console.log("Empty");
                     } else {
                         console.log("Not Empty, id_member:", response.id_member);
-                        let accorderButtons = document.querySelectorAll(".accorder");
-                        accorderButtons.forEach(button =>{
-                            if (Number(button.id) === idMember) {
-                                
-                                button.style.color = "red";
-                                button.innerHTML = `Credit`;
-                            }
-                        })
+                        desactivateButton(idMember);
+                      
                     }
                 } catch (error) {
                     console.error("Error parsing JSON:", error);
@@ -131,29 +127,52 @@ function dateCredit() {
         
     }
 
-function grantCredit(id_avec,montant,id_membre,date , callback) {
-    data  = new FormData() ;
-    data.append('idAvec' , id_avec);
-    data.append('montant' ,montant);
-    data.append('idMembre' , id_membre);
-    data.append('dateCredit',date);
-    xhr = new XMLHttpRequest();
-    xhr.onreadystatechange= function() {
-        if((xhr.readyState===4)&& (xhr.status===200)){
-            console.log("response",xhr.response,"end Answer");
-            const messageConfirm = xhr.response;
-           
-        } else {
-            console.log("request failed");
-        }
-
+    function grantCredit(id_avec, montant, id_membre, date) {
+        // Créer un objet FormData pour envoyer les données
+        var data = new FormData();
+        data.append('idAvec', id_avec);
+        data.append('montant', montant);
+        data.append('idMembre', id_membre);
+        data.append('dateCredit', date);
+    
+        // Créer une nouvelle requête XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+    
+        // Définir la fonction à exécuter lorsque l'état de la requête change
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("response", xhr.response, "end Answer");
+                const messageConfirm = xhr.response;
+    
+                // Traiter la réponse comme nécessaire
+            } else {
+                console.log("request failed");
+            }
+        };
+    
+        // Ouvrir la requête avec la méthode POST et l'URL du serveur
+        xhr.open('POST', '../controllers/Credits/emprunter.php');
+    
+        // Envoyer les données avec la requête
+        xhr.send(data);
     }
+    
 
-    xhr.open('POST', '../controllers/Credits/emprunter.php');
-    xhr.send(data);
+    
+    
+    
+
+function desactivateButton(idMember) {
+    let accorderButtons = document.querySelectorAll(".accorder");
+    accorderButtons.forEach(button =>{
+        if (Number(button.id) === idMember) {
+            
+            button.style.color = "red";
+            button.innerHTML = `Credit`;
+        }
+    })
     
 }
-
 
     
     

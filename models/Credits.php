@@ -39,7 +39,8 @@ class Credits{
     public static function emprunts () {
         global $connection ;
         
-        $requette = 'SELECT * FROM credits';
+        $requette = 'SELECT * FROM credits JOIN membre ON 
+        credits.id_membre=membre.id_membre ';
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array()) ;
         $emprunts = [];
@@ -88,6 +89,44 @@ class Credits{
 
             return $epargne;
         } else return [];
+    }
+    
+    public static function payCredit($idMmbre ,$idAvec ,$montant ) {
+        global $connection ;
+        $result = false ;
+        $requette = 'UPDATE credits SET montant= montant - :montant
+        WHERE id_membre = :membre AND id_avec = :id_avec';
+        $statement = $connection->prepare($requette);
+        $execution = $statement->execute(array(
+  
+            'id_membre'=> $idMmbre,
+            'id_avec'=> $idAvec,
+            'montant'=> $montant
+        ))  ; 
+
+        if ($execution) {
+            $result = true ;
+            return $result ;
+        } else {
+            return $result;
+        }
+
+    } 
+
+    public static function amountBorroed () {
+        global $connection ;
+        $requette = 'SELECT SUM(montant) as totalAmount FROM credits';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([]);
+
+        if ($execution) {
+            $data = $statement -> fetch();
+            $amountBorrowed =  $data['totalAmount'];
+            return $amountBorrowed;
+        } else {
+            return 0;
+        }
+
     }
 
     public function getDateCredit(){

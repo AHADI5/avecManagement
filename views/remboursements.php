@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../style/avec.css">
     <link rel="stylesheet" href="../style/membres.css">
     <link rel="stylesheet" href="../style/popup.css">
+    <link rel="stylesheet" href="../style/epargnes.css">
     <title>Home</title>
 </head>
 <?php
@@ -27,17 +28,11 @@
             </div>
             <div class="conts">
                 <div class="page-level">#<span class="id" id="<?php echo $id ?>"><?php echo $id ?></span> </div>
+                <div class="page-level1 date-zone"></div>
+
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
-                    <div class="actions">
-                        <div class="action flex"> 
-                           <button class = "new-member"> <i class = "bi bi-plus"></i>Ajouter Membres</button>
-                           <button class = "epargnes"> <i class = "bi bi-save"></i>Epargnes</button>
-                           <button class = "credits"> <i class="bi bi-credit-card-2-back-fill"></i>Credits</button>
-                           <button class = "rembourser"> <i class="bi bi-wallet-fill"></i></i>Rembourser</button>
-                         </div>
-                        <div class="action"></div>
-                    </div>
+                    <div class="message hidden-message"></div>
                 </div>
                 <div class="informations-avec">
                    
@@ -51,8 +46,11 @@
                    <th>Numero</th>
                    <th>Nom</th>
                    <th>Postnom</th>
-                   <th>Adresse</th>
-                   <th>Actions</th>
+                   <th>Montant</th>
+                   <th>Reste</th>
+
+                 
+                   
                </thead>
                <tbody class=".membres-list">
                 <?php
@@ -68,18 +66,18 @@
                     $telephone = $membresAvec[$i]['telephone'];
                     echo <<< __END
                         <tr>
-                            <td class ="num">$numero</td>
+                            <td class ="num" id = "$numero">$numero</td>
                             <td>$nom</td>
                             <td>$postnom</td>
-                            <td>$adresse</td>
-                            <td class = "cell-dell"><button class= "deleteMem">Retirer</button></td>
+                            <td> <input type="number" name="montant" id="montant" ></td>
+                            <td class = "reste">0</td>
+                            <td id="$numero" class = "giveBack"><button  class= "giveBackButton">Rembourser</button></td>
                         </tr>
                     __END;
                 }   
                 ?>
 
-       
-                  
+               
                </tbody>
            </table>
            <div class="add-member  inactive_popup">
@@ -122,12 +120,9 @@
         </div>
        
     </div>
-    <script src="../script/getAvecById.js"></script>
-    <script src="../script/addMembers.js"></script>
-    <script src="../script/retirerMember.js"></script>
-    <script src="../script/epargnes.js"></script>
-    <script src="../script/credits.js"></script>
-    <script src="../script/remboursement.js"></script>
-    
+
+
+   
+   
 </body>
 </html>
