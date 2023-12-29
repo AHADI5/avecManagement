@@ -56,9 +56,11 @@ function rembourser(idMembre, idCredit,idAvec,dateRemboursement, amount) {
     xhr.send(data);
 }
 
-function update(newAmount) {
+function update(newAmount, idAvec,idMember) {
     let data = new FormData();
-    data.append("amount", newAmount);
+    data.append("montant", newAmount);
+    data.append("id_membre",idAvec);
+    data.append("id_membre",idMember);
     if((xhr.readyState===4)&& (xhr.status===200)){
         console.log("response",xhr.response,"end Answer");
 
