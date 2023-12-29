@@ -1,6 +1,7 @@
 let idAv = Number(document.querySelector(".id").id);
 
 
+
 getAvecCredit(idAv);
    function getAvecCredit(idAvecparam) {
         let data = new FormData();
@@ -20,8 +21,9 @@ getAvecCredit(idAv);
                         let idMember = Number(id.innerHTML);
                         let idAvec = Number(document.querySelector(".id").id);
                         let montant = Number(parent.querySelector("#montant").value);
-                        let montantCredit = Number(parent.querySelector(".creditNumber").id)
-                        console.log(idMember, idAvec, montant, montantCredit);
+                        let Credit = Number(parent.querySelector(".creditNumber").id);
+                        let dateRem = dateRemb();
+                        rembourser(idMember,Credit,idAvec,dateRem,montant);
                     })
                 })
             } else {
@@ -36,6 +38,53 @@ getAvecCredit(idAv);
 
 
 
-function rembouser() {
-    
+function rembourser(idMembre, idCredit,idAvec,dateRemboursement, amount) {
+    let data = new FormData() ;
+    data.append("idMembre", idMembre);
+    data.append("idCredit", idCredit);
+    data.append("idAvec", idAvec);
+    data.append("dateRemboursement", dateRemboursement);
+    data.append("amount", amount);
+    if((xhr.readyState===4)&& (xhr.status===200)){
+        console.log("response",xhr.response,"end Answer");
+
+    } else {
+        console.log("request failed");
+    }
+
+    xhr.open('POST', '../controllers/remboursement/rembourser.php');
+    xhr.send(data);
 }
+
+function update(newAmount) {
+    let data = new FormData();
+    data.append("amount", newAmount);
+    if((xhr.readyState===4)&& (xhr.status===200)){
+        console.log("response",xhr.response,"end Answer");
+
+    } else {
+        console.log("request failed");
+    }
+
+    xhr.open('POST', '../controllers/remboursement/rembourser.php');
+    xhr.send(data);
+
+}
+
+
+    
+function dateRemb() {
+    const currentDate = new Date();
+        // Obtenir les composants de la date
+    const year = currentDate.getFullYear();
+    const month = (`0${currentDate.getMonth() + 1}`).slice(-2); // Les mois commencent à 0, donc ajouter 1 et formater avec deux chiffres
+    const day = (`0${currentDate.getDate()}`).slice(-2);
+    const hours = (`0${currentDate.getHours()}`).slice(-2);
+    const minutes = (`0${currentDate.getMinutes()}`).slice(-2);
+    const seconds = (`0${currentDate.getSeconds()}`).slice(-2);
+    
+    // Construire la chaîne de format DATETIME
+    const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    return formattedDateTime;
+        
+    }
