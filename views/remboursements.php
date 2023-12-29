@@ -44,40 +44,14 @@
            <table>
                <thead>
                    <th>Numero</th>
+                   <th>Credit</th>
                    <th>Nom</th>
                    <th>Postnom</th>
                    <th>Montant</th>
                    <th>Reste</th>
-
-                 
-                   
                </thead>
-               <tbody class=".membres-list">
-                <?php
-                 include("C:\laragon\www\avecManagement\configurations\config.php");
-                 include("C:\laragon\www\avecManagement\models\avecMembres.php");
-
-                 $membresAvec = AvecMembres::getavecMembers($id);
-                 for ($i=0; $i <count($membresAvec); $i++) { 
-                    $numero = $membresAvec[$i]['id_membre'];
-                    $nom = $membresAvec[$i]['nom'];
-                    $postnom = $membresAvec[$i]['postnom'];
-                    $adresse = $membresAvec[$i]['adresse'];
-                    $telephone = $membresAvec[$i]['telephone'];
-                    echo <<< __END
-                        <tr>
-                            <td class ="num" id = "$numero">$numero</td>
-                            <td>$nom</td>
-                            <td>$postnom</td>
-                            <td> <input type="number" name="montant" id="montant" ></td>
-                            <td class = "reste">0</td>
-                            <td id="$numero" class = "giveBack"><button  class= "giveBackButton">Rembourser</button></td>
-                        </tr>
-                    __END;
-                }   
-                ?>
-
-               
+               <tbody class="liste-creditsAvec">
+                
                </tbody>
            </table>
            <div class="add-member  inactive_popup">
@@ -122,7 +96,7 @@
     </div>
 
 
-   
-   
+   <script src="../script/rembourser.js"></script>
+   <script src="../script/getCreditsAvec.js"></script>   
 </body>
 </html>

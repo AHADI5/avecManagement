@@ -75,8 +75,10 @@ class Credits{
     
     public static function getCreditByIdavec($id) {
         global $connection ;
-        $requette = 'SELECT * FROM credits JOIN  avec ON 
-        credits.id_avec=avec.id_avec WHERE id_membre = :id';
+        $requette = 'SELECT * FROM credits
+        JOIN membre ON membre.id_membre = credits.id_membre
+        WHERE credits.id_avec = :id';
+        
         $statement = $connection -> prepare($requette);
         $execution = $statement -> execute(array(
             ':id'=> $id,
