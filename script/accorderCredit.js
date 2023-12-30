@@ -1,18 +1,19 @@
 let grantCredits = document.querySelectorAll(".accorder");
 let messageContainer = document.querySelector(".message");
-let grantCreditButton = document.querySelectorAll(".accorder");
+let grantCreditButton = document.querySelectorAll(".grantButton");
 
 for (let index = 0; index < grantCreditButton.length; index++) {
-    const element =Number(grantCreditButton[index].id) ;
+    const element =Number((grantCreditButton[index].parentNode).id) ;
     console.log(element);
     verifyPreviousCredit(element);
    
 }
 
-grantCredits.forEach(element  => {
+grantCreditButton.forEach(element  => {
     element.addEventListener("click", (ev) =>{
    
-        let parent = ev.currentTarget.parentNode;
+        let par = ev.currentTarget.parentNode;
+        let parent = par.parentNode;
         let idAvec = Number(document.querySelector(".id").id);
         let dateCr = dateCredit();
         const id = parent.querySelector(".num");
@@ -58,7 +59,7 @@ grantCredits.forEach(element  => {
 
 function verifyPreviousCredit(idMember) {
     var data = new FormData();
-    data.append("id_member", idMember);
+    data.append("id_membre", idMember);
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function () {
@@ -68,13 +69,18 @@ function verifyPreviousCredit(idMember) {
                     var response = JSON.parse(xhr.responseText);
                     console.log("Response:", response);
                     //Verifying Wether the member has a credit 
-                    if (response.isEmpty) {
-                        console.log("Empty");
+                    if (response.isEmpty || response.Montant === 0) {
+                        console.log("E(mpty");
+                        activateButton(idMember);
                     } else {
                         console.log("Not Empty, id_member:", response.id_member);
-                        desactivateButton(idMember);
-                      
+                        //desactivate Button "Accorder"
+                        dasactivateButton(idMember); 
                     }
+
+                    //  If the amount is Zero the button is activated
+
+            
                 } catch (error) {
                     console.error("Error parsing JSON:", error);
                 }
@@ -162,16 +168,31 @@ function dateCredit() {
     
     
 
-function desactivateButton(idMember) {
-    let accorderButtons = document.querySelectorAll(".accorder");
+function activateButton(idMember) {
+    let accorderButtons = document.querySelectorAll(".grantButton");
     accorderButtons.forEach(button =>{
-        if (Number(button.id) === idMember) {
-            
-            button.style.color = "red";
-            button.innerHTML = `Credit`;
+       
+        if (Number((button.parentNode).id) === idMember) {
+            button.classList.remove("desactivated");
+            button.classList.add("activated");
+            button.desabled = true;
+            button.innerHTML = `Accorder`;
         }
     })
     
+}
+
+function dasactivateButton (idMember) {
+    let accorderButtons = document.querySelectorAll(".grantButton");
+    accorderButtons.forEach(button =>{
+       
+        if (Number((button.parentNode).id) === idMember) {
+            button.classList.add("desactivated");
+            button.desabled = false;
+            button.innerHTML = `Credit en cours`;
+        }
+    })
+
 }
 
     

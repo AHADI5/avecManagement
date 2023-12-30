@@ -50,7 +50,35 @@
                    <th>Montant</th>
                   
                </thead>
-               <tbody class="liste-creditsAvec">
+               <tbody class="">
+                    <?php 
+                    include("C:\laragon\www\avecManagement\configurations\config.php");
+                    include("C:\laragon\www\avecManagement\models\Credits.php");
+                    
+                    $emprunts = Credits::getCreditByIdavec($id);
+
+                    for ($i=0; $i <count($emprunts); $i++) { 
+                        $idCredit = $emprunts[$i]['id_credit'];
+                        $montantCredit = $emprunts[$i]['montant'];
+                        $numero = $emprunts[$i]['id_membre'];
+                        $nom = $emprunts[$i]['nom'];
+                        $postnom = $emprunts[$i]['postnom'];
+                        $adresse = $emprunts[$i]['adresse'];
+                        $telephone = $emprunts[$i]['telephone'];
+                        echo <<< __END
+                            <tr>
+                                <td class ="num" id = "$numero">$numero</td>
+                                <td class ="creditNumber" id = "$idCredit">$montantCredit USD</td>
+                                <td>$nom</td>
+                                <td>$postnom</td>
+                                <td> <input type="number" name="montant" id="montant" ></td>
+
+                                <td id="$numero" class = "giveBack"><button  class= "giveBackButton">Rembourser</button></td>
+                            </tr>
+                        __END;
+                    }  
+
+                    ?>
                 
                </tbody>
            </table>
@@ -73,6 +101,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody class="membres">
+                            
 
                                             
                             </tbody>
@@ -95,8 +124,8 @@
        
     </div>
 
-
+    <script src="../script/getCreditsAvec.js"></script> 
    <script src="../script/rembourser.js"></script>
-   <script src="../script/getCreditsAvec.js"></script>   
+    
 </body>
 </html>

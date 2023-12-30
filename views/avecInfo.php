@@ -54,7 +54,7 @@
                    <th>Adresse</th>
                    <th>Actions</th>
                </thead>
-               <tbody class=".membres-list">
+               <tbody class="membres-list">
                 <?php
                  include("C:\laragon\www\avecManagement\configurations\config.php");
                  include("C:\laragon\www\avecManagement\models\avecMembres.php");
@@ -76,10 +76,7 @@
                         </tr>
                     __END;
                 }   
-                ?>
-
-       
-                  
+                ?>     
                </tbody>
            </table>
            <div class="add-member  inactive_popup">

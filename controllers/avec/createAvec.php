@@ -17,7 +17,7 @@ include("../../models/Avec.php");
     $tauxInteret,$social_value);
 
     if ($avec -> registerAvec()) {
-        echo 'success';
+        header('Location:../../views/avec.php');
     } else {
         echo 'Failed';
     }

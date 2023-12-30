@@ -99,3 +99,32 @@ button i{
     color: white;
    
 }
+
+.accorder button {
+  
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.activated {
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+
+.desactivated {
+    background-color: var(--primary-color-light);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--text-color);
+    
+}

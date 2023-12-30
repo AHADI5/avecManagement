@@ -1,16 +1,11 @@
 const addMemberButton = document.querySelector(".new-member");
 const popupContainer = document.querySelector(".add-member");
-const pageContainer = document.querySelector("body");
 const closeButton = document.querySelector(".close-popup");
 
 const id_avec =document.querySelector(".page-level>.id");
 addMemberButton.addEventListener("click" , () => {
-  
-   
     popupContainer.classList.toggle("inactive_popup");
-  
     getEpa() ;
-
 })
 
 // // when clik outiside the box , close the popup
@@ -29,7 +24,7 @@ closeButton.addEventListener("click" , () => {
 //Getting Members , and adding listeners to those buttons
 function getEpa() {
     xhr = new XMLHttpRequest();
-    xhr.onreadystatechange= function() {
+    xhr.onreadystatechange= () => {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             const memberZone = document.querySelector(".membres");
@@ -86,11 +81,11 @@ function getAvecMembers(id_avec) {
     data = new FormData() ;
     data.append("id_avec", id_avec);
     xhr = new XMLHttpRequest();
-    xhr.onreadystatechange= function() {
+    xhr.onreadystatechange= () => {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             let reponse = xhr.response;
-            const memberZone  = document.querySelector(".membres-list");
+            const memberZone  = document.querySelector("membres-list");
             memberZone.innerHTML = reponse;
         } else {
             console.log("request failed");
@@ -102,5 +97,14 @@ function getAvecMembers(id_avec) {
     xhr.send(data);
 }
 
+function checkMember(idMember,idAvec, callback) {
+    
+}
 
+function desactivateButton () {
 
+}
+
+function activateButton() {
+    
+}

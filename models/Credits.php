@@ -97,7 +97,7 @@ class Credits{
         global $connection ;
         $result = false ;
         $requette = 'UPDATE credits SET montant= montant - :montant
-        WHERE id_membre = :membre AND id_avec = :id_avec';
+        WHERE id_membre = :id_membre AND id_avec = :id_avec';
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array(
   
@@ -114,6 +114,28 @@ class Credits{
         }
 
     } 
+
+    public static function getUpdatedCredit($idAvec, $idMembre) 
+    {
+        global $connection ;
+        $requette = 'SELECT montant FROM credits WHERE
+         id_avec = :id_avec AND id_membre = :id_membre';
+         $statemnt = $connection -> prepare($requette);
+         $execution  = $statemnt -> execute([
+            'id_avec' => $idAvec,
+            'id_membre' => $idMembre,
+         ]);
+
+         if ($execution) {
+            $data = $statemnt -> fetch();
+            $montant = $data['montant'];
+            return $montant;
+         } else {
+            return null;
+         }
+         
+
+    }
 
     public static function amountBorroed () {
         global $connection ;

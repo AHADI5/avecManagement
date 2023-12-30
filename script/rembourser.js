@@ -1,77 +1,79 @@
-let idAv = Number(document.querySelector(".id").id);
-
-
-
-getAvecCredit(idAv);
-   function getAvecCredit(idAvecparam) {
-        let data = new FormData();
-        data.append("id_avec",idAvecparam);
-        xhr = new XMLHttpRequest();
-        xhr.onreadystatechange= function() {
-            if((xhr.readyState===4)&& (xhr.status===200)){
-                console.log("response",xhr.response,"end Answer");
-                let listeCreditsAvec = document.querySelector(".liste-creditsAvec");
-                const response = xhr.response;
-                listeCreditsAvec.innerHTML = response;
-                let rembourser = document.querySelectorAll(".giveBack");
-                rembourser.forEach(element =>{
-                    element.addEventListener("click" , (ev) =>{
-                        let parent = ev.currentTarget.parentNode;
-                        const id = parent.querySelector(".num");
-                        let idMember = Number(id.innerHTML);
-                        let idAvec = Number(document.querySelector(".id").id);
-                        let montant = Number(parent.querySelector("#montant").value);
-                        let Credit = Number(parent.querySelector(".creditNumber").id);
-                        let dateRem = dateRemb();
-                        rembourser(idMember,Credit,idAvec,dateRem,montant);
-                    })
-                })
-            } else {
-                console.log("request failed");
-            }
-        }
-        xhr.open('POST', '../controllers/Credits/empruntsAvec.php');
-        xhr.send(data);
-
+let rembourser = document.querySelectorAll(".giveBack");
+rembourser.forEach(element =>{
+    element.addEventListener("click" , (ev) =>{
+        let parent = ev.currentTarget.parentNode;
+        const id = parent.querySelector(".num");
+        let idMember = Number(id.innerHTML);
+        let idAvec = Number(document.querySelector(".id").id);
+        let montant = Number(parent.querySelector("#montant").value);
+        let Credit = Number(parent.querySelector(".creditNumber").id);
+        let dateRem = dateRemb();
     
-   }
+        update(montant,idAvec,idMember, (amountRemains) =>{
+            let creditContainer = parent.querySelector(".creditNumber");
+            creditContainer.innerHTML = amountRemains + " USD";
+
+        } );
+        payBack(idMember,Credit,idAvec,dateRem,montant);
+        // console.log(`idMember ${idMember},idAvec ${idAvec},montant ${montant},Credit${Credit},dateRem ${dateRem}`)
+    })
+})
 
 
-
-function rembourser(idMembre, idCredit,idAvec,dateRemboursement, amount) {
-    let data = new FormData() ;
+function payBack (idMembre, idCredit,idAvec,dateRemboursement, amount) {
+    data = new FormData() ;
     data.append("idMembre", idMembre);
     data.append("idCredit", idCredit);
     data.append("idAvec", idAvec);
     data.append("dateRemboursement", dateRemboursement);
     data.append("amount", amount);
-    if((xhr.readyState===4)&& (xhr.status===200)){
-        console.log("response",xhr.response,"end Answer");
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+         
+        } else {
+            console.log("request failed");
+        }
 
-    } else {
-        console.log("request failed");
     }
 
     xhr.open('POST', '../controllers/remboursement/rembourser.php');
     xhr.send(data);
 }
 
-function update(newAmount, idAvec,idMember) {
-    let data = new FormData();
+
+function update(newAmount,idAvec,idMember, callback) {
+    var data = new FormData();
     data.append("montant", newAmount);
-    data.append("id_membre",idAvec);
     data.append("id_membre",idMember);
-    if((xhr.readyState===4)&& (xhr.status===200)){
-        console.log("response",xhr.response,"end Answer");
+    data.append("id_avec",idAvec);
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+                    // console.log("Amount :", response.Montant);
+                    callback(response.Montant)
 
-    } else {
-        console.log("request failed");
-    }
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
 
-    xhr.open('POST', '../controllers/remboursement/rembourser.php');
+
+    xhr.open('POST', '../controllers/Credits/payCredit.php');
     xhr.send(data);
-
 }
+
+
 
 
     
@@ -90,3 +92,5 @@ function dateRemb() {
     return formattedDateTime;
         
     }
+
+console.log(dateRemb());

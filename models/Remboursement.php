@@ -30,7 +30,8 @@ class Remboursement{
             'id_membre'=> $this->getIdMembre(),
             'id_credit'=> $this->getIdCredit(),
             'id_avec'=> $this->getId_avec(),
-            'date_remb'=> $this->getDateRemboursement()
+            'date_remb'=> $this->getDateRemboursement(),
+            'montant' => $this -> getMontant(),
         ));
 
         if( $execution) {

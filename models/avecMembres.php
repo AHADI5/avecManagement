@@ -50,6 +50,25 @@ class AvecMembres {
         }
 
     }
+    public static function checkMemberAve($idMember, $idAvec) {
+        global $connection;
+    
+        $query = 'SELECT * FROM avec_members WHERE id_membre = :id_member AND id_avec = :id_avec';
+        $statement = $connection->prepare($query);
+        $execution = $statement->execute([
+            'id_member' => $idMember,
+            'id_avec' => $idAvec
+        ]);
+    
+        if ($execution) {
+            $data = $statement->fetch(PDO::FETCH_ASSOC);
+            return ($data !== false); // Returns true if member exists, false otherwise
+        } else {
+          
+            return false;
+        }
+    }
+    
 
     public static function deleteMemberFromAvec($id_member) {
         global $connection ;
