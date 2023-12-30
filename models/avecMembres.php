@@ -87,6 +87,27 @@ class AvecMembres {
         }
     }
 
+    public static function getIdsMembers($id_Avec) {
+        global $connection ;
+        $requette = 'SELECT id_membre FROM avec_members
+        WHERE id_avec = :id_avec';
+        $statement  = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            'id_avec' => $id_Avec,
+        ]);
+        $numero = [];
+        if ($execution) {
+          while ( $data = $statement -> fetch()) {
+            array_push($numero, $data['id_membre']);
+          }
+          return $numero;
+
+        } else {
+          return [];
+        }
+        
+    }
+
     public function getIdMembres() {
         return $this->id_membres;
     }

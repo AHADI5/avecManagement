@@ -9,7 +9,7 @@ if (isset($_POST["id_avec"]) && isset($_POST["id_member"])) {
      * Checking Wether Member Exists in Selected Avec
      */
     if (AvecMembres::checkMemberAve($id_member,$id_avec)) {
-        echo json_encode(array("Exists" => "Exists"));
+        echo json_encode(array("Exists" => true));
     } else {
         
         $avecList = new AvecMembres($id_member, $id_avec);

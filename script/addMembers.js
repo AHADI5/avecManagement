@@ -1,6 +1,7 @@
 const addMemberButton = document.querySelector(".new-member");
 const popupContainer = document.querySelector(".add-member");
 const closeButton = document.querySelector(".close-popup");
+const saveButton = document.querySelector()
 
 const id_avec =document.querySelector(".page-level>.id");
 addMemberButton.addEventListener("click" , () => {
@@ -21,6 +22,8 @@ closeButton.addEventListener("click" , () => {
     popupContainer.classList.add("inactive_popup");
 } )
 
+
+
 //Getting Members , and adding listeners to those buttons
 function getEpa() {
     xhr = new XMLHttpRequest();
@@ -30,7 +33,25 @@ function getEpa() {
             const memberZone = document.querySelector(".membres");
             const response = xhr.response;
             memberZone.innerHTML = response;
-
+            //Checking Whether the member Exists 
+            let members = document.querySelectorAll("tr");
+            for (let index = 0; index < members.length; index++) {
+                const element = members[index];
+                let idTotest =  element.querySelector('#id_membre');
+                if (idTotest != null) {
+                    //Calling test method 
+                    testId((parseInt(idTotest.innerHTML)) , (idArray) =>{
+                        if (idArray.includes(parseInt(idTotest.innerHTML))) {
+                           //Hiding member if he exists 
+                            idTotest.parentNode.style.display = "None";
+                        } 
+                    })
+                   
+                    
+                }
+                
+            }
+            console.log(members);
             let membersToadd = document.querySelectorAll(".cell-act");
             membersToadd.forEach(element => {
                 element.addEventListener("click" , (ev) => {
@@ -39,8 +60,12 @@ function getEpa() {
                     let id_membre = parseInt(id.innerHTML);
                     // console.log(id_membre);
                     // console.log();
+                    checkMember(id_membre,parseInt(id_avec.id), (Exists) =>{
+                        console.log(Exists);
+                    });
                     sendData(parseInt(id_avec.id),id_membre);
-                    getAvecMembers(parseInt(id_avec.id));
+                    // getAvecMembers(parseInt(id_avec.id));
+                  
                 })
                 
             });
@@ -98,6 +123,59 @@ function getAvecMembers(id_avec) {
 }
 
 function checkMember(idMember,idAvec, callback) {
+    var data = new FormData();
+    data.append("id_member", idMember);
+    data.append("id_avec",idAvec);
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+                    callback(response.Exists);
+                   
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
+
+    xhr.open('POST', '../controllers/avecMember/addMember.php');
+    xhr.send(data);
+    
+}
+
+function testId(idMember, callback) {
+    var data = new FormData();
+    data.append("id_member", idMember);
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+
+                    callback(response);
+                   
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
+
+    xhr.open('POST', '../controllers/avecMember/membersAvecId.php');
+    xhr.send(data);
+
     
 }
 
