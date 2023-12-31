@@ -26,3 +26,13 @@
 .hidden-message {
     visibility: hidden;
 }
+
+.taux {
+    padding: 10px;
+}
+
+.confirmation-message {
+    padding: 10px;
+   
+}
+

@@ -75,13 +75,14 @@ class Epargnes {
         } else return [];
     }
 
-    public static function getEpargneByAvec ($id_avec) {
+    public static function getEpargneByAvec ($id_avec, $idMember) {
         global $connection ;
-        $requette = 'SELECT * FROM epargnes JOIN avec ON 
-        epargnes.id_avec=avec.id_avec WHERE avec.id_avec = :id_avec';
+        $requette = 'SELECT * FROM epargnes WHERE id_avec = :id_avec 
+        AND epargnes.id_membre = :id_membre';
         $statement = $connection -> prepare($requette);
         $execution = $statement -> execute([
             ':id_avec'=> $id_avec,
+            ':id_membre' => $idMember
         ]);
         $epargne =[];
         if ($execution) {

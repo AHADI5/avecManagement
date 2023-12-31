@@ -8,13 +8,35 @@ rembourser.forEach(element =>{
         let montant = Number(parent.querySelector("#montant").value);
         let Credit = Number(parent.querySelector(".creditNumber").id);
         let dateRem = dateRemb();
-    
-        update(montant,idAvec,idMember, (amountRemains) =>{
-            let creditContainer = parent.querySelector(".creditNumber");
-            creditContainer.innerHTML = amountRemains + " USD";
+        getCreditAmount(idMember,idAvec, (creditAmount) => {
+            if (montant > creditAmount) {
+                console.log("Too Much");
+                
+            } else {
+                update(montant,idAvec,idMember, (amountRemains) =>{
+                    let creditContainer = parent.querySelector(".creditNumber");
+                        payBack(idMember,Credit,idAvec,dateRem,montant);
+                        creditContainer.innerHTML = amountRemains + " USD";
 
-        } );
-        payBack(idMember,Credit,idAvec,dateRem,montant);
+                        if (amountRemains == 0) {
+                            updateStatus(idMember,idAvec);
+                            let messageBox = document.querySelector(".message");
+                            messageBox.innerHTML = "Felicitations Credit Payes ";
+                            messageBox.classList.remove("hidden-message");
+                            messageBox.classList.add("shown-message-success");
+                            setTimeout(() => {
+                                messageBox.classList.add("hidden-message");
+                                messageBox.classList.add("shown-message-success");
+                            }, 2000);
+                        } 
+                    
+                } );
+                
+            }
+        });
+       
+
+        
         // console.log(`idMember ${idMember},idAvec ${idAvec},montant ${montant},Credit${Credit},dateRem ${dateRem}`)
     })
 })
@@ -93,4 +115,48 @@ function dateRemb() {
         
     }
 
-console.log(dateRemb());
+function getCreditAmount(idMember , idAvec, callback) {
+    var data = new FormData();
+    data.append("id_membre",idMember);
+    data.append("id_avec",idAvec);
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+                    // console.log("Amount :", response.Montant);
+                    callback(response);
+
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
+    xhr.open('POST', '../controllers/Credits/getCreditAmount.php');
+    xhr.send(data);
+}
+
+function updateStatus(idMembre, idAvec) {
+    data = new FormData() ;
+    data.append("id_member", idMembre);
+    data.append("id_avec", idAvec);
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+         
+        } else {
+            console.log("request failed");
+        }
+
+    }
+
+    xhr.open('POST', '../controllers/Credits/updateStatus.php');
+    xhr.send(data);
+}

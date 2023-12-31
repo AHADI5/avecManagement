@@ -8,7 +8,7 @@ $idAvec = $_POST['idAvec'];
 $montant = $_POST['montant'];
 
 $credit = new Credits($dateCredit,  
-$idMember, $idAvec, $montant);
+$idMember, $idAvec, $montant,0);
 
 if ($credit ->emprunter()) {
    echo 'Emprunt';

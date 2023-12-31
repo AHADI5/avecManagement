@@ -40,7 +40,7 @@ class Social {
         social.id_membre=membre.id_membre';
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array()) ;
-
+        $social = [];
         if ($execution) {
             while($data = $statement->fetch()) {
                 $social[] = $data;

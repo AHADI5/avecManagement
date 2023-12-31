@@ -1,4 +1,5 @@
 let register = document.querySelectorAll(".enregistrer");
+console.log(register);
 let dateZone = document.querySelector(".date-zone");
 dateZone.innerHTML = getDate();
 register.forEach(element => {
@@ -13,10 +14,34 @@ register.forEach(element => {
     
      let amount = parts * part_value; // le montant eparngne
      let date = getDate();
+    
 
      //Saving 
-     Epargner(idAvec,idMember,amount,parts,date);
-     social(idAvec,idMember,date,socialAmount);
+    checkEpargne(idAvec,idMember, (dates) => {
+        if (dates.includes(date.split(" ")[0])) {
+            let warningBox = document.querySelector(".confirmation-message");
+            warningBox.innerHTML = "Deja Contribuer Aujourd'ui !"; 
+            warningBox.classList.add("shown-message-success");
+            setTimeout(() =>{
+                warningBox.classList.add("hidden-message");
+            }, 2000); 
+          
+        } else {
+            let warningBox = document.querySelector(".confirmation-message");
+            warningBox.innerHTML = "Contribution Reusie !!"; 
+            setTimeout(() =>{
+                warningBox.classList.add("hidden-message");
+            }, 2000); 
+            Epargner(idAvec,idMember,amount,parts,date);
+            social(idAvec,idMember,date,socialAmount);
+            updateSolde(idAvec,amount);
+        }
+    });
+    
+    console.log("here are params :" ,idMember,idAvec,socialAmount, amount, date)
+    
+     
+    
 
     //  console.log(idMember,idAvec,parts,social, part_value, amount, date);
     
@@ -36,9 +61,6 @@ function Epargner(id_avec, id_membre, montant, parts, date) {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             const response = xhr.response;
-            console.log(response);
-          
-
         } else {
             console.log("request failed");
         }
@@ -86,3 +108,70 @@ return formattedDateTime;
     
 }
 
+function updateSolde(id_avec, amount) {
+    // Créer un objet FormData pour envoyer les données
+    var data = new FormData();
+    data.append('id_avec', id_avec);
+    data.append('montant', amount);
+    
+
+    // Créer une nouvelle requête XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Définir la fonction à exécuter lorsque l'état de la requête change
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("response", xhr.response, "end Answer");
+            
+
+            // Traiter la réponse comme nécessaire
+        } else {
+            console.log("request failed");
+        }
+    };
+
+    // Ouvrir la requête avec la méthode POST et l'URL du serveur
+    xhr.open('POST', '../controllers/avec/updateSolde.php');
+
+    // Envoyer les données avec la requête
+    xhr.send(data);
+  
+}
+
+function checkEpargne(id_avec, id_member, callback) {
+    var data = new FormData();
+    data.append('id_avec', id_avec);
+    data.append('id_membre', id_member);
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+                    console.log(response);
+                    callback(response);
+                    //Verifying Wether the member has a credit 
+                    
+
+                    //  If the amount is Zero the button is activated
+
+            
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
+
+
+    // Ouvrir la requête avec la méthode POST et l'URL du serveur
+    xhr.open('POST', '../controllers/epargnes/getAvecEpargnes.php');
+
+    // Envoyer les données avec la requête
+    xhr.send(data);
+    
+}

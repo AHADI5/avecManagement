@@ -140,6 +140,47 @@ class Avec
         
     }
 
+    public static function updateSolde ($idAvec , $montant) {
+        global $connection ;
+        $result = false ;
+        $requette = 'UPDATE avec SET solde = solde + :montant
+        WHERE id_avec = :id_avec';
+
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            'id_avec' => $idAvec,
+            'montant' => $montant,
+        ]);
+
+        if ($execution) {
+            $result = true ;
+            return $result ;
+        } else {
+            return $result ;
+        }
+
+    }
+
+    public static function updateSoldeOncredit ($idAvec , $montant) {
+        global $connection ;
+        $result = false ;
+        $requette = 'UPDATE avec SET solde = solde - :montant
+        WHERE id_avec = :id_avec';
+
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            'id_avec' => $idAvec,
+            'montant' => $montant,
+        ]);
+
+        if ($execution) {
+            $result = true ;
+            return $result ;
+        } else {
+            return $result ;
+        }
+
+    }
 
 
     public function getdateDebut () {

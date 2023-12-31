@@ -1,6 +1,6 @@
 <?php
  $id = $_GET["id"];
-
+$taux = $_GET["taux"];
 
 ?>
 <!DOCTYPE html>
@@ -30,19 +30,15 @@
             </div>
             <div class="conts">
                 <div class="page-level">#<span class="id" id="<?php echo $id ?>"><?php echo $id ?></span> </div>
-                <div class="page-level1 date-zone"></div>
+                <div class="taux"> <span> Intérêt :</span> <span id="tauxIn"><?php echo $taux ?></span> USD </div>
 
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
-                    <div class="message hidden-message"></div>
+                    <div class="message"></div>
+                    
                 </div>
-                <div class="informations-avec">
-                   
-                </div>
-                <div class="avec-list grid">
-           
-                   
-           </div>
+                <!-- <div class="mess">---</div> -->
+            
            <table>
                <thead>
                    <th>Numero</th>

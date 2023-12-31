@@ -38,13 +38,8 @@
                 <div class="action-text flex">
                     <div class="text">Lorem ipsum dolor sit amet.</div>
                 </div>
-                <div class="informations-avec">
-                   
-                </div>
-                <div class="avec-list grid">
-           
-                   
-           </div>
+                <div class="confirmation-message"></div>
+              
            <table>
                <thead>
                    <th>Numero</th>
@@ -113,7 +108,6 @@
                         <div class="actions flex"> 
                             <button>Save</button>
                             <button>Cancel</button>
-
                          </div>
                     </div>
                     
@@ -128,6 +122,6 @@
     </div>
    
     <script src="../script/epargner.js"></script>
-    <script src ="../script/addMembers.js"></script>
+    <!-- <script src ="../script/addMembers.js"></script> -->
 </body>
 </html>

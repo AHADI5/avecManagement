@@ -104,7 +104,7 @@
                            
                         </table>
                         <div class="actions flex"> 
-                            <button>Save</button>
+                            <button class ="save" >Save</button>
                             <button>Cancel</button>
 
                          </div>

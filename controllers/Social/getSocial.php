@@ -14,7 +14,7 @@ for ($i=0; $i < count($social) ; $i++) {
            
             <td>$nom</td>
             <td>$postnom</td>
-            <td>$montant USD</td>
+            <td>$montant CDF</td>
             <td>$date</td>
             
         </tr>

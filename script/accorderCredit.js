@@ -1,11 +1,22 @@
 let grantCredits = document.querySelectorAll(".accorder");
 let messageContainer = document.querySelector(".message");
 let grantCreditButton = document.querySelectorAll(".grantButton");
+let avecVerifParam = Number(document.querySelector(".id").id);
 
 for (let index = 0; index < grantCreditButton.length; index++) {
     const element =Number((grantCreditButton[index].parentNode).id) ;
-    console.log(element);
-    verifyPreviousCredit(element);
+    // console.log(element,avecVerifParam);
+    verifyPreviousCredit(element, avecVerifParam , (Status) => {
+        if (Status === 1 || Status === 2 ) {
+            console.log("Payed",grantCreditButton[index].parentNode.parentNode);
+            
+        } else {
+            (grantCreditButton[index].parentNode.parentNode).style.display = "none";
+          
+      
+        }
+
+    });
    
 }
 
@@ -14,6 +25,8 @@ grantCreditButton.forEach(element  => {
    
         let par = ev.currentTarget.parentNode;
         let parent = par.parentNode;
+        let interestRate = Number(document.querySelector("#tauxIn").innerHTML)
+       
         let idAvec = Number(document.querySelector(".id").id);
         let dateCr = dateCredit();
         const id = parent.querySelector(".num");
@@ -23,8 +36,18 @@ grantCreditButton.forEach(element  => {
 
             //Checking wether the amount is equal to three times the total amount Saved 
             if (amount === (3*amountSaved)) {
-                grantCredit(idAvec,amount,idMember,dateCr);
-                desactivateButton(idMember)
+                console.log(idAvec,dateCr, amount)
+                //Taking interest On credit 
+                let interet = amount*interestRate/100
+                let amountTogrant = amount  - (interet);
+               
+                // let warningBox = document.querySelector(".mess");
+
+                //Granting Credit 
+                grantCredit(idAvec,amountTogrant,idMember,dateCr);
+                parent.style.display = "none";
+                
+             
                 messageContainer.innerHTML = `
                 Credit accordé  : ${amount} USD
                 `
@@ -57,9 +80,10 @@ grantCreditButton.forEach(element  => {
 
 })
 
-function verifyPreviousCredit(idMember) {
+function verifyPreviousCredit(idMember , idAvec  , callback) {
     var data = new FormData();
     data.append("id_membre", idMember);
+    data.append("id_avec",idAvec);
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function () {
@@ -68,15 +92,9 @@ function verifyPreviousCredit(idMember) {
                 try {
                     var response = JSON.parse(xhr.responseText);
                     console.log("Response:", response);
+                    callback(response.Status);
                     //Verifying Wether the member has a credit 
-                    if (response.isEmpty || response.Montant === 0) {
-                        console.log("E(mpty");
-                        activateButton(idMember);
-                    } else {
-                        console.log("Not Empty, id_member:", response.id_member);
-                        //desactivate Button "Accorder"
-                        dasactivateButton(idMember); 
-                    }
+                    
 
                     //  If the amount is Zero the button is activated
 
@@ -163,37 +181,65 @@ function dateCredit() {
         xhr.send(data);
     }
     
-
-    
-    
-    
-
-function activateButton(idMember) {
-    let accorderButtons = document.querySelectorAll(".grantButton");
-    accorderButtons.forEach(button =>{
-       
-        if (Number((button.parentNode).id) === idMember) {
-            button.classList.remove("desactivated");
-            button.classList.add("activated");
-            button.desabled = true;
-            button.innerHTML = `Accorder`;
-        }
-    })
+function updateSolde(id_avec, amount) {
+      // Créer un objet FormData pour envoyer les données
+      var data = new FormData();
+      data.append('idAvec', id_avec);
+      data.append('montant', montant);
+      
+  
+      // Créer une nouvelle requête XMLHttpRequest
+      var xhr = new XMLHttpRequest();
+  
+      // Définir la fonction à exécuter lorsque l'état de la requête change
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+              console.log("response", xhr.response, "end Answer");
+              
+  
+              // Traiter la réponse comme nécessaire
+          } else {
+              console.log("request failed");
+          }
+      };
+  
+      // Ouvrir la requête avec la méthode POST et l'URL du serveur
+      xhr.open('POST', '../controllers/avec/updateSolde.php');
+  
+      // Envoyer les données avec la requête
+      xhr.send(data);
     
 }
-
-function dasactivateButton (idMember) {
-    let accorderButtons = document.querySelectorAll(".grantButton");
-    accorderButtons.forEach(button =>{
-       
-        if (Number((button.parentNode).id) === idMember) {
-            button.classList.add("desactivated");
-            button.desabled = false;
-            button.innerHTML = `Credit en cours`;
-        }
-    })
-
-}
-
     
+    
+    
+
+// function activateButton(idMember) {
+//     let accorderButtons = document.querySelectorAll(".grantButton");
+//     accorderButtons.forEach(button =>{
+       
+//         if (Number((button.parentNode).id) === idMember) {
+//             button.classList.remove("desactivated");
+//             button.classList.add("activated");
+//             button.desabled = true;
+//             button.innerHTML = `Accorder`;
+//         }
+//     })
+    
+// }
+
+// function dasactivateButton (idMember) {
+//     let accorderButtons = document.querySelectorAll(".grantButton");
+//     accorderButtons.forEach(button =>{
+       
+//         if (Number((button.parentNode).id) === idMember) {
+//             button.classList.add("desactivated");
+//             button.desabled = false;
+//             button.innerHTML = `Credit en cours`;
+//         }
+//     })
+
+// }
+
+
     

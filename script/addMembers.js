@@ -1,7 +1,16 @@
 const addMemberButton = document.querySelector(".new-member");
 const popupContainer = document.querySelector(".add-member");
 const closeButton = document.querySelector(".close-popup");
-const saveButton = document.querySelector()
+const saveButton = document.querySelector(".save");
+
+
+// when save button is clicked , then close the popup 
+
+saveButton.addEventListener("click" , () => {
+    popupContainer.classList.add("inactive_popup");
+
+})
+
 
 const id_avec =document.querySelector(".page-level>.id");
 addMemberButton.addEventListener("click" , () => {
