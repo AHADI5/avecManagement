@@ -197,17 +197,17 @@ class Credits{
          }
     }
 
-    public static function updateStatusCredit ($idMember , $idAvec, $newStatus) {
+    public static function updateStatusCredit($idMember, $idAvec, $newStatus) {
         global $connection ;
         $result = false ;
-        $requette = 'UPDATE credits SET credit_status = :credit_status
+        $requette = 'UPDATE credits SET credit_status = :new_status
         WHERE id_membre = :id_membre AND id_avec = :id_avec';
         $statement = $connection->prepare($requette);
         $execution = $statement->execute(array(
             'id_membre'=> $idMember,
             'id_avec'=> $idAvec,
-            'credit_status' => $newStatus,
-        )); 
+            'new_status' => $newStatus
+        ))  ; 
 
         if ($execution) {
             $result = true ;
@@ -216,6 +216,7 @@ class Credits{
             return $result;
         }
     }
+    
 
     public function getDateCredit(){
         return $this->date_credit;
