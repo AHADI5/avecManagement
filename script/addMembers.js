@@ -2,12 +2,12 @@ const addMemberButton = document.querySelector(".new-member");
 const popupContainer = document.querySelector(".add-member");
 const closeButton = document.querySelector(".close-popup");
 const saveButton = document.querySelector(".save");
-
-
+const avecIdPage = parseInt(document.querySelector(".id").id)
 // when save button is clicked , then close the popup 
 
 saveButton.addEventListener("click" , () => {
     popupContainer.classList.add("inactive_popup");
+    getAvecMembers(avecIdPage);
 
 })
 
@@ -65,15 +65,19 @@ function getEpa() {
             membersToadd.forEach(element => {
                 element.addEventListener("click" , (ev) => {
                     let parent= (ev.currentTarget).parentNode;
+                    console.log(parent);
                     let id = parent.querySelector("#id_membre");
+                    console.log(id);
                     let id_membre = parseInt(id.innerHTML);
-                    // console.log(id_membre);
-                    // console.log();
-                    checkMember(id_membre,parseInt(id_avec.id), (Exists) =>{
-                        console.log(Exists);
-                    });
+                    console.log(id_membre);
                     sendData(parseInt(id_avec.id),id_membre);
-                    // getAvecMembers(parseInt(id_avec.id));
+                    parent.style.display = "none" ;
+                    // // console.log();
+                    // checkMember(id_membre,parseInt(id_avec.id), (Exists) =>{
+                    //     console.log(Exists);
+                    // });
+                    
+                    // // getAvecMembers(parseInt(id_avec.id));
                   
                 })
                 
@@ -119,7 +123,7 @@ function getAvecMembers(id_avec) {
         if((xhr.readyState===4)&& (xhr.status===200)){
             console.log("response",xhr.response,"end Answer");
             let reponse = xhr.response;
-            const memberZone  = document.querySelector("membres-list");
+            const memberZone  = document.querySelector(".membres-list");
             memberZone.innerHTML = reponse;
         } else {
             console.log("request failed");
@@ -127,7 +131,7 @@ function getAvecMembers(id_avec) {
 
     }
 
-    xhr.open('POST', '../controllers/avecMember/getMembers.php');
+    xhr.open('POST', '../controllers/avecMember/getMembersActions.php');
     xhr.send(data);
 }
 

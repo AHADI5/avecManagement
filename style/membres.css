@@ -17,3 +17,11 @@ tr td {
     text-align: center;
     padding: 12px;
 }
+.deleteMem {
+    outline: none;
+    border: none;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px;
+
+}

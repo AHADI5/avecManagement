@@ -14,11 +14,11 @@ if (isset($_POST['id_avec'])) {
         $telephone = $membresAvec[$i]['telephone'];
         echo <<< __END
             <tr>
-                <td>$numero</td>
+                <td  class = "num">$numero</td>
                 <td>$nom</td>
                 <td>$postnom</td>
                 <td>$adresse</td>
-                <td>$telephone</td>
+                <td class = "cell-dell"><button class= "deleteMem">Retirer</button></td>
             </tr>
         __END;
     }

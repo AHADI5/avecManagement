@@ -1,0 +1,2 @@
+#RewriteEngine on
+#RwriteRules . /views/login.php

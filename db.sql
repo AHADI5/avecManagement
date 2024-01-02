@@ -68,6 +68,11 @@ CREATE TABLE social (
     FOREIGN KEY (id_avec) REFERENCES avec(id_avec)
 );
 
+CREATE TABLE ADMIN (
+id_amin INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+username VARCHAR(50) NOT NULL ,
+PASSWORD VARCHAR(50) NOT NULL
+);
 CREATE TABLE epargnes (
 	id_epargnes INT NOT NULL AUTO_INCREMENT,
 	id_membre INT NOT NULL,
@@ -78,6 +83,7 @@ CREATE TABLE epargnes (
    FOREIGN KEY (id_membre) REFERENCES membre(id_membre),
    FOREIGN KEY (id_avec) REFERENCES avec(id_avec)
    );
+   
 
 ALTER TABLE epargnes ADD COLUMN date DATETIME NOT NULL;
 ALTER TABLE epargnes ADD COLUMN parts INT NOT NULL;

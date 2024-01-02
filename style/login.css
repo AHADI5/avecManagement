@@ -1,0 +1,44 @@
+.login-main{
+    grid-template-columns: 50% 40%;
+}
+
+.login-form {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.picture img{
+    width: 80%;
+}
+input, .action-login button {
+    padding: 10px;
+    width: 360px;
+    margin-top: 10px;
+}
+
+.action-login button  {
+   
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    color: white;
+}
+
+.header-login div {
+    margin-top: 5px;
+    
+}
+
+.title {
+    font-weight: 800;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.picture {
+    justify-content: center;
+    align-items: center;
+    align-content:center ;
+    height: 100vh;
+}

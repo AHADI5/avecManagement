@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php
  $id = $_GET["id"];
 ?>
@@ -126,6 +127,7 @@
 
     <script src="../script/getCreditsAvec.js"></script> 
    <script src="../script/rembourser.js"></script>
+   <script src="../script/deconnectAdmin.js"></script>
     
 </body>
 </html>

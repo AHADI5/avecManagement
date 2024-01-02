@@ -19,8 +19,9 @@
 
 .profile-section{
     gap: 10px;
-    background-color: var(--primary-color-light);
-    padding: 5px;
+    background-color: var(--body-color);
+    padding: 8px;
+    color: white;
 }
 
 .profile-pic {
@@ -30,4 +31,17 @@
 .name-pic {
     gap: 10px;
    
+}
+
+.log-out {
+    
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    background-color: var(--primary-color);
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+    
 }

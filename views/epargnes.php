@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php
  $id = $_GET["id"];
  $part_value =$_GET["part"];
@@ -123,5 +124,6 @@
    
     <script src="../script/epargner.js"></script>
     <!-- <script src ="../script/addMembers.js"></script> -->
+    <script src="../script/deconnectAdmin.js"></script>
 </body>
 </html>

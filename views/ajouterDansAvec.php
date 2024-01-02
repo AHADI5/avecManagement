@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php
 $idavec = $_GET['idAvec']
 ?>
@@ -67,6 +68,7 @@ $idavec = $_GET['idAvec']
         </div>
        
     </div>
+    <script src="../script/deconnectAdmin.js"></script>
     
 </body>
 </html>

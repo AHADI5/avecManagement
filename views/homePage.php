@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,7 @@
         </div>
        
     </div>
+    <script src="../script/deconnectAdmin.js"></script>
     
 </body>
 </html>

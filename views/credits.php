@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php
  $id = $_GET["id"];
 $taux = $_GET["taux"];
@@ -120,6 +121,7 @@ $taux = $_GET["taux"];
     </div>
 
     <script src="../script/accorderCredit.js"></script>
+    <script src="../script/deconnectAdmin.js"></script>
    
    
 </body>

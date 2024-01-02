@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,5 +54,6 @@
        
     </div>
     <script src="../script/getSocial.js"></script>  
+    <script src="../script/deconnectAdmin.js"></script>
 </body>
 </html>

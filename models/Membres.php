@@ -73,7 +73,7 @@ class Membres {
     public static function deleteMembre($id) {
         global $connection ;
         $result = false ;
-        $requette = 'DELETE FROM membre WHERE id_membre = :id_membre';
+        $requette = 'DELETE FROM avec_members WHERE id_membre = :id_membre';
         $stmt = $connection->prepare($requette);
         $execution = $stmt->execute(array(
             ':id_membre'=> $id
