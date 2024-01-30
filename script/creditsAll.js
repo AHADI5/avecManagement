@@ -1,4 +1,5 @@
 
+
 getAllCredits()
 function getAllCredits() {
    
@@ -9,6 +10,7 @@ function getAllCredits() {
             let listeCredits = document.querySelector(".liste-credits");
             const response = xhr.response;
             listeCredits.innerHTML = response;
+            console.log(response);
            
 
         } else {

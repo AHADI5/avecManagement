@@ -1,0 +1,20 @@
+.conts {
+    grid-template-columns: auto 50%;
+}
+
+
+.graph-content {
+    width: 500px;
+}
+
+/* .total-saved {
+    background-color: red;
+}
+
+.graph_credits {
+    background-color: blue;
+} */
+
+.recents {
+    gap: 80px ;
+}

@@ -9,6 +9,7 @@ for ($i=0; $i < count($emprunts) ; $i++) {
     $postnom = $emprunts[$i]['postnom'];
     $montant = $emprunts[$i]['montant'];
     $date = $emprunts[$i] ['date_credit'];
+
     echo <<< __END
         <tr>
            
@@ -19,5 +20,8 @@ for ($i=0; $i < count($emprunts) ; $i++) {
             
         </tr>
     __END;
+
+
+    
     
 }

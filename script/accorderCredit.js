@@ -167,6 +167,7 @@ function dateCredit() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log("response", xhr.response, "end Answer");
                 const messageConfirm = xhr.response;
+                console.log(messageConfirm);
     
                 // Traiter la réponse comme nécessaire
             } else {
