@@ -86,6 +86,7 @@
     <script src="../script/deconnectAdmin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../script/homeCharts.js"></script>
+    <script src="../script/activeLink.js"></script>
     
     
 </body>
