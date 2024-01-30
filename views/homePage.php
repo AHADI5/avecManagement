@@ -21,9 +21,9 @@
             <div class="conts grid">
                 <div class="graph_credits">
                     
-                    <div class="graph">
+                    <div class="graph flex">
                         <div class="title-graph">Revenus Mensuel</div>
-                        <div class="graph-content">
+                        <div class="graph-content ">
                              <canvas id="myChart"></canvas>
                         </div>
                     </div>
@@ -56,6 +56,24 @@
                 </div>
                 <div class="total-saved">
                     <div class="section-title">Total </div>
+                    <div class="section-content">
+                        <div class="saved element">
+                            <div class="title-cont">Total Saved</div>
+                            <div class="amount">5000$</div>
+                        </div>
+                        <div class="credit-granted element">
+                            <div class="title-cont">Credit Granted</div>
+                            <div class="amount">6000$</div>
+                        </div>
+                        <div class="credit-granted element">
+                            <div class="title-cont">Payed Amount</div>
+                            <div class="amount">6000$</div>
+                        </div>
+                        <div class="social element">
+                            <div class="title-cont">Total social</div>
+                            <div class="social_amount">6000$</div>
+                        </div>
+                    </div>
                    
 
                 </div>

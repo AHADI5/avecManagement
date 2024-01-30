@@ -8,14 +8,19 @@
 }
 
 .graph {
-    padding: 5px;
+    
     background-color: white;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
 }
 
 .graph-content {
     width: 600px;
   
-    padding: 10px;
+    
 }
 
 /* .total-saved {
@@ -47,5 +52,33 @@
     width: 24px;
 }
 
+.total-saved {
+    padding: 13px;
+    background-color: white;
+    border-radius: 5px;
+}
 
+.title-cont {
+    
+    font-weight: bolder;
+}
+
+.section-content {
+    padding: 20px;
+}
+
+.saved .amount {
+    font-size: 30px;
+    
+}
+
+.element {
+    background-color: var(--primary-color-light);
+    padding: 10px;
+    margin-top: 10px;
+}
+.saved {
+    background-color: rgb(200, 87, 65);
+    color: white;
+}
 
