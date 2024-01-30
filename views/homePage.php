@@ -65,13 +65,15 @@
                             <div class="title-cont">Credit Granted</div>
                             <div class="amount">6000$</div>
                         </div>
-                        <div class="credit-granted element">
-                            <div class="title-cont">Payed Amount</div>
-                            <div class="amount">6000$</div>
-                        </div>
+                     
                         <div class="social element">
                             <div class="title-cont">Total social</div>
                             <div class="social_amount">6000$</div>
+                        </div>
+                        <div class="members-chart flex">
+                            <div class="graph-cont">
+                                <canvas id="gender-chart"></canvas>
+                            </div>
                         </div>
                     </div>
                    

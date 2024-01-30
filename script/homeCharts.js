@@ -1,5 +1,6 @@
 
 const ctx = document.getElementById('myChart');
+const sctx = document.getElementById("gender-chart");
 
 
   new Chart(ctx, {
@@ -22,3 +23,26 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
+
+  const data = {
+    labels: [
+      'Red',
+      'Blue',
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [300, 50],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+      ],
+      hoverOffset: 4
+    }]
+  };
+
+  new Chart(sctx , {
+    type : 'doughnut',
+    data : data,
+  })
+
+ 
