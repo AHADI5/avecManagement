@@ -12,7 +12,7 @@ $password = $_POST['password'];
 // }
 
 if (authentification::login($username, $password)) {
-    header('Location:../../views/avec.php');
+    header('Location:../../views/homePage.php');
 } else {
     header('Location:../../views/login.php');
 }
