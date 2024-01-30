@@ -1,10 +1,21 @@
 .conts {
-    grid-template-columns: auto 50%;
+    grid-template-columns: auto 30%;
+    background-color: var(--primary-color-light);
+}
+.graph_credits {
+    padding: 12px;
+   
 }
 
+.graph {
+    padding: 5px;
+    background-color: white;
+}
 
 .graph-content {
-    width: 500px;
+    width: 600px;
+  
+    padding: 10px;
 }
 
 /* .total-saved {
@@ -16,5 +27,25 @@
 } */
 
 .recents {
-    gap: 80px ;
+    gap: 30px ;
 }
+.credits , .saves  {
+    background-color: white;
+    padding: 12px;
+    width: 90%;
+    border-radius: 9px;
+    margin-top: 10px;
+
+}
+
+.credits .title , .saves .title {
+    gap:  10px;
+
+}
+.saves img  {
+    height: 24px;
+    width: 24px;
+}
+
+
+

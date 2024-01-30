@@ -20,19 +20,34 @@
             </div>
             <div class="conts grid">
                 <div class="graph_credits">
-                    <div class="title-graph">Revenus Mensuel</div>
+                    
                     <div class="graph">
+                        <div class="title-graph">Revenus Mensuel</div>
                         <div class="graph-content">
                              <canvas id="myChart"></canvas>
                         </div>
                     </div>
                     <div class="recents flex">
                         <div class="credits">
-                            <div class="title">Recent Credits</div>
+                            <div class="title flex"> 
+                                <div class="icon-recent"><img src="../imgs/recentCredits.png" alt=""></div> 
+                                <div class="text-title">Recent Credits</div>
+                            </div>
+                            <div class="recent-credits-content">
+                                
+
+                            </div>
 
                         </div>
                         <div class="saves">
-                            <div class="title">Recent Savings</div>
+                             <div class="title flex"> 
+                                <div class="icon-recent"><img src="../imgs/save-money.png" alt=""></div> 
+                                <div class="text-title">Recent Savings</div>
+                            </div>
+                            <div class="recent-savings-content">
+                                
+
+                            </div>
                         </div>
                         
 
@@ -40,6 +55,7 @@
                     
                 </div>
                 <div class="total-saved">
+                    <div class="section-title">Total </div>
                    
 
                 </div>
